@@ -5,12 +5,8 @@ import {
   Monitor,
   Tablet,
   Smartphone,
-  Copy,
-  Check,
   ChevronLeft,
   ChevronRight,
-  Heart,
-  Bookmark,
 } from 'lucide-react';
 import { LandingPage, ViewportMode } from '../types';
 
@@ -23,11 +19,11 @@ interface ShowroomModalProps {
   hasNext: boolean;
   currentIndex: number;
   totalCount: number;
-  isLiked: boolean;
-  isSaved: boolean;
-  likeCount: number;
-  onToggleLike: (e: React.MouseEvent, pageId: string) => void;
-  onToggleSave: (e: React.MouseEvent, pageId: string) => void;
+  isLiked?: boolean;
+  isSaved?: boolean;
+  likeCount?: number;
+  onToggleLike?: (e: React.MouseEvent, pageId: string) => void;
+  onToggleSave?: (e: React.MouseEvent, pageId: string) => void;
   onSelectTag?: (tag: string) => void;
 }
 
@@ -40,14 +36,8 @@ export const ShowroomModal: React.FC<ShowroomModalProps> = ({
   hasNext,
   currentIndex,
   totalCount,
-  isLiked,
-  isSaved,
-  likeCount,
-  onToggleLike,
-  onToggleSave,
 }) => {
   const [viewport, setViewport] = useState<ViewportMode>('desktop');
-  const [copied, setCopied] = useState(false);
 
   // Keyboard navigation & escape listener
   useEffect(() => {
@@ -64,13 +54,6 @@ export const ShowroomModal: React.FC<ShowroomModalProps> = ({
   }, [page, hasPrev, hasNext, onClose, onPrev, onNext]);
 
   if (!page) return null;
-
-  const handleCopy = () => {
-    const fullUrl = `${window.location.origin}${page.url}`;
-    navigator.clipboard.writeText(fullUrl);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
 
   // Viewport width styling
   const getViewportWidth = () => {
@@ -187,43 +170,6 @@ export const ShowroomModal: React.FC<ShowroomModalProps> = ({
               <ChevronRight className="w-4 h-4" />
             </button>
           </div>
-
-          {/* Bookmark / Save */}
-          <button
-            onClick={(e) => onToggleSave(e, page.id)}
-            className={`p-2.5 rounded-full border transition ${
-              isSaved
-                ? 'bg-[#EA4C89] border-[#EA4C89] text-white shadow-md shadow-[#EA4C89]/30'
-                : 'bg-[#0D0C22] border-white/10 text-zinc-300 hover:text-white hover:border-white/20'
-            }`}
-            title={isSaved ? 'Saved to Favorites' : 'Save Template'}
-          >
-            <Bookmark className={`w-4 h-4 ${isSaved ? 'fill-current' : ''}`} />
-          </button>
-
-          {/* Like Template with Count */}
-          <button
-            onClick={(e) => onToggleLike(e, page.id)}
-            className={`flex items-center space-x-1.5 px-4 py-2.5 rounded-full border transition ${
-              isLiked
-                ? 'bg-[#EA4C89] border-[#EA4C89] text-white shadow-md shadow-[#EA4C89]/30'
-                : 'bg-[#0D0C22] border-white/10 text-zinc-300 hover:text-white hover:border-white/20'
-            }`}
-            title="Like this template"
-          >
-            <Heart className={`w-4 h-4 ${isLiked ? 'fill-current text-white' : 'text-[#EA4C89]'}`} />
-            <span className="text-xs font-semibold font-mono">{likeCount}</span>
-          </button>
-
-          {/* Copy Direct Link */}
-          <button
-            onClick={handleCopy}
-            className="flex items-center space-x-1.5 px-3.5 py-2.5 rounded-full bg-[#0D0C22] border border-white/10 hover:border-white/20 text-zinc-300 hover:text-white transition text-xs font-semibold"
-            title={copied ? 'Link Copied!' : 'Copy Direct Link'}
-          >
-            {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-            <span className="hidden sm:inline">{copied ? 'Copied' : 'Copy Link'}</span>
-          </button>
 
           {/* Visit Live Page Button */}
           <a

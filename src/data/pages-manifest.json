@@ -1,6 +1,6 @@
 {
-  "scannedAt": "2026-10-30T09:27:39.646Z",
-  "totalCount": 5,
+  "scannedAt": "2026-10-30T10:12:49.538Z",
+  "totalCount": 6,
   "categories": [
     "Business",
     "Ecommerce",
@@ -8,6 +8,23 @@
     "SaaS"
   ],
   "pages": [
+    {
+      "id": "business-signal_social",
+      "title": "Signal Social — Make your brand impossible to scroll past",
+      "description": "Signal Social helps ambitious brands turn attention into community, customers and measurable growth.",
+      "category": "Business",
+      "categorySlug": "business",
+      "url": "/landing-pages/Business/Signal_Social/index.html",
+      "fileName": "index.html",
+      "folder": "Business/Signal_Social",
+      "tags": [],
+      "updatedAt": "2026-10-30T10:07:49.788Z",
+      "author": "Personal Project",
+      "avatarGradient": "from-amber-400 to-orange-500",
+      "initialLikes": 125,
+      "viewsCount": "2.5k",
+      "isPro": true
+    },
     {
       "id": "saas-taskflow",
       "title": "Taskflow — All your work, moving together",
