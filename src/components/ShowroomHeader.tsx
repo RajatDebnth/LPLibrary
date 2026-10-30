@@ -36,14 +36,13 @@ export const ShowroomHeader: React.FC = () => {
   }, []);
 
   const currentUrl = typeof window !== 'undefined' ? window.location.origin : 'https://landingvault.dev';
-  const creatorLinkedin = 'https://www.linkedin.com/in/rajat-debnath/';
 
-  // Pre-crafted hooked post texts with creator credit
+  // Pre-crafted hooked post texts with creator credit & website URL
   const shareData = {
-    linkedin: `Found this incredible Landing Page Library built by Rajat Debnath (${creatorLinkedin}) 🚀\n\nLive-coded HTML & CSS templates with 100% code fidelity, live sandbox viewports, and zero backend bloat. Pure design and frontend inspiration!\n\n${currentUrl}`,
-    x: `Just stumbled upon this slick Landing Page Library built by Rajat Debnath ⚡\n\nCurated live-coded HTML templates with zero database overhead and responsive device viewports. Pure inspiration!\n\n${currentUrl} #webdesign #frontend #buildinpublic`,
-    whatsapp: `Check out this Landing Page Library built by Rajat Debnath (${creatorLinkedin}) — 100% live-coded HTML/CSS templates with instant device viewports: ${currentUrl}`,
-    threads: `Obsessed with this landing page showcase built by Rajat Debnath ✨ A curated library of live-coded HTML templates with responsive viewports: ${currentUrl}`,
+    linkedin: `Found this incredible Landing Page Library crafted by Rajat Debnath 🚀\n\nLive-coded HTML & CSS templates with 100% code fidelity, live sandbox viewports, and zero backend bloat. Pure design and frontend inspiration!\n\n${currentUrl}`,
+    x: `Just stumbled upon this slick Landing Page Library crafted by Rajat Debnath ⚡\n\nCurated live-coded HTML templates with zero database overhead and responsive device viewports. Pure inspiration!\n\n${currentUrl} #webdesign #frontend #buildinpublic`,
+    whatsapp: `Check out this Landing Page Library crafted by Rajat Debnath — 100% live-coded HTML/CSS templates with instant device viewports: ${currentUrl}`,
+    threads: `Obsessed with this landing page showcase crafted by Rajat Debnath ✨ A curated library of live-coded HTML templates with responsive viewports: ${currentUrl}`,
   };
 
   const handleShare = (platform: 'linkedin' | 'x' | 'whatsapp' | 'threads') => {

@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "scan": "node scripts/scan-pages.mjs",
-    "predev": "npm run scan",
+    "generate:og": "node scripts/generate-og-image.mjs",
+    "predev": "npm run scan && npm run generate:og",
     "dev": "vite",
-    "prebuild": "npm run scan",
+    "prebuild": "npm run scan && npm run generate:og",
     "build": "tsc -b && vite build",
     "preview": "vite preview"
   },
@@ -25,6 +26,7 @@
     "tailwind-merge": "^3.0.2"
   },
   "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
     "@types/node": "^22.13.4",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
@@ -36,4 +38,3 @@
     "vite": "^6.1.0"
   }
 }
-
