@@ -38,13 +38,28 @@ h1{font:800 clamp(44px,6.2vw,82px)/1.05 Manrope;letter-spacing:-.065em;max-width
 .card-info{padding:15px 16px 16px}.card-title{font-weight:700;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.card-meta{display:flex;align-items:center;justify-content:space-between;color:#92909e;font-size:12px;margin-top:10px}.creator{display:flex;align-items:center;gap:7px}.avatar{width:22px;height:22px;border-radius:50%;object-fit:cover}.stats{display:flex;gap:11px}
 .feature-band{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}.feature{border:1px solid var(--line);border-radius:24px;background:radial-gradient(circle at 80% 20%,#49308a44,transparent 40%),#111116;padding:38px;min-height:280px;position:relative;overflow:hidden}.feature h3{font:800 30px Manrope;letter-spacing:-.04em;margin:14px 0 10px;max-width:390px}.feature p{color:#aaa8b5;max-width:390px;line-height:1.6}.feature .btn{display:inline-block;margin-top:14px}.feature-visual{position:absolute;right:3%;bottom:-25px;width:40%;height:78%;border-radius:20px;transform:rotate(8deg);background:linear-gradient(145deg,#ffb7a1,#b46bff 45%,#4c61db);box-shadow:0 25px 70px #0008}.feature-visual:before,.feature-visual:after{content:"";position:absolute;border-radius:50%;background:#f9e6c6;filter:blur(1px)}.feature-visual:before{width:130px;height:130px;top:17%;left:20%;box-shadow:45px 70px 0 -20px #3c276e}.feature-visual:after{width:60px;height:60px;right:12%;bottom:18%;background:#62e4d1}
 .feature.small{background:radial-gradient(circle at 75% 15%,#2b6e7950,transparent 45%),#111116}.feature.small .feature-visual{background:linear-gradient(145deg,#d8ffb0,#55d7c7 50%,#5660e9);width:34%;right:5%;transform:rotate(-8deg)}.feature.small .feature-visual:before{background:#f7f2e9;box-shadow:55px 60px 0 -10px #8b5cf6}
-.creator-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.creator-card{display:flex;align-items:center;gap:12px;padding:14px;background:#111116;border:1px solid var(--line);border-radius:15px}.creator-card img{width:42px;height:42px;border-radius:12px;object-fit:cover}.creator-card strong{display:block;font-size:13px}.creator-card small{color:#9694a2;font-size:11px;display:block;margin-top:4px}
+.makers-showcase{display:flex;flex-direction:column;gap:14px;overflow:hidden;width:calc(100% + 8vw);margin-left:-4vw;padding:12px 0;mask-image:linear-gradient(90deg,transparent 0%,#000 6%,#000 94%,transparent 100%);-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 6%,#000 94%,transparent 100%)}
+.makers-marquee{display:flex;overflow:hidden;white-space:nowrap;width:100%}
+.makers-track{display:flex;width:max-content;will-change:transform}
+.makers-track:hover{animation-play-state:paused}
+.makers-group{display:flex;gap:14px;flex-shrink:0;align-items:center;padding:4px 7px}
+.rail-1 .makers-track{animation:makers-rtl 28s linear infinite}
+.rail-2 .makers-track{animation:makers-ltr 38s linear infinite}
+.rail-3 .makers-track{animation:makers-rtl 21s linear infinite}
+@keyframes makers-rtl{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes makers-ltr{0%{transform:translateX(-50%)}100%{transform:translateX(0)}}
+.creator-card{display:flex;align-items:center;gap:12px;padding:12px 18px;background:#111116;border:1px solid var(--line);border-radius:16px;flex-shrink:0;width:260px;transition:transform .25s ease,border-color .25s ease,background-color .25s ease;cursor:pointer;box-shadow:0 6px 22px rgba(0,0,0,.3)}
+.creator-card:hover{transform:translateY(-3px);border-color:#8b5cf6;background:#181523}
+.creator-card img{width:44px;height:44px;border-radius:12px;object-fit:cover;border:1px solid #ffffff18;flex-shrink:0}
+.creator-card strong{display:block;font-size:13px;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.creator-card small{color:#9694a2;font-size:11px;display:block;margin-top:2px}
+.creator-pill{margin-left:auto;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:4px 8px;border-radius:6px;background:#ffffff0a;border:1px solid #ffffff14;color:#c4b5fd;flex-shrink:0}
 .newsletter{border:1px solid var(--line);border-radius:24px;padding:42px;background:linear-gradient(110deg,#171326,#111116 65%);display:flex;align-items:center;justify-content:space-between;gap:25px}.newsletter h2{font:800 30px Manrope;letter-spacing:-.04em;margin:0 0 8px}.newsletter p{color:#a5a2b0;margin:0}.newsletter-form{display:flex;gap:8px;max-width:420px;width:100%}.newsletter-form input{min-width:0;flex:1;background:#0b0b10;border:1px solid var(--line);border-radius:11px;padding:13px;color:white;outline:none}
 footer{margin-top:80px;border-top:1px solid var(--line);padding:54px 0 24px;background:#0c0c10}.footer-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:45px}.footer-brand p{max-width:290px;color:#92909d;line-height:1.7;font-size:13px}.socials{display:flex;gap:8px;margin-top:18px}.socials a{width:34px;height:34px;border:1px solid var(--line);border-radius:10px;display:grid;place-items:center;color:#bbb}.footer-col strong{display:block;font-size:13px;margin-bottom:17px}.footer-col a{display:block;color:#9997a5;font-size:13px;margin:12px 0}.footer-col a:hover{color:#fff}.footer-bottom{border-top:1px solid var(--line);margin-top:42px;padding-top:20px;display:flex;justify-content:space-between;color:#777582;font-size:11px}
 .empty{grid-column:1/-1;text-align:center;color:#aaa;padding:55px;border:1px dashed var(--line);border-radius:18px}
-@media(max-width:1000px){.gallery{grid-template-columns:repeat(3,1fr)}.creator-grid{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:700px){.container{width:min(100% - 34px,600px)}nav{height:70px}.navlinks,.navright .ghost{display:none}.menu{display:block}.navright .primary{padding:10px 13px}.hero{padding:70px 0 35px}h1{font-size:47px}.hero p{font-size:15px}.search-wrap{margin-top:27px}.search-wrap button{padding:13px 16px}.hero-art{margin:40px -4vw 0;width:calc(100% + 8vw)}.art-tile{width:160px;height:120px;border-radius:13px}.section{padding:55px 0}.section-head{align-items:start;flex-direction:column}.gallery{grid-template-columns:repeat(2,1fr);gap:11px}.thumb{height:175px}.card-info{padding:12px}.card-title{font-size:13px}.card-meta{font-size:10px}.stats{gap:6px}.feature-band{grid-template-columns:1fr}.feature{min-height:260px;padding:27px}.feature h3{font-size:26px;max-width:260px}.feature p{max-width:250px}.feature-visual{width:34%;right:-3%;height:65%}.creator-grid{grid-template-columns:repeat(2,1fr)}.newsletter{padding:28px;align-items:start;flex-direction:column}.newsletter h2{font-size:25px}.footer-grid{grid-template-columns:repeat(2,1fr);gap:30px}.footer-brand{grid-column:1/-1}.footer-bottom{gap:12px;flex-direction:column}}
-@media(max-width:390px){.gallery{grid-template-columns:1fr}.thumb{height:220px}.creator-grid{grid-template-columns:1fr}.quick-tags{display:none}}
+@media(max-width:1000px){.gallery{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:700px){.container{width:min(100% - 34px,600px)}nav{height:70px}.navlinks,.navright .ghost{display:none}.menu{display:block}.navright .primary{padding:10px 13px}.hero{padding:70px 0 35px}h1{font-size:47px}.hero p{font-size:15px}.search-wrap{margin-top:27px}.search-wrap button{padding:13px 16px}.hero-art{margin:40px -4vw 0;width:calc(100% + 8vw)}.art-tile{width:160px;height:120px;border-radius:13px}.section{padding:55px 0}.section-head{align-items:start;flex-direction:column}.gallery{grid-template-columns:repeat(2,1fr);gap:11px}.thumb{height:175px}.card-info{padding:12px}.card-title{font-size:13px}.card-meta{font-size:10px}.stats{gap:6px}.feature-band{grid-template-columns:1fr}.feature{min-height:260px;padding:27px}.feature h3{font-size:26px;max-width:260px}.feature p{max-width:250px}.feature-visual{width:34%;right:-3%;height:65%}.newsletter{padding:28px;align-items:start;flex-direction:column}.newsletter h2{font-size:25px}.footer-grid{grid-template-columns:repeat(2,1fr);gap:30px}.footer-brand{grid-column:1/-1}.footer-bottom{gap:12px;flex-direction:column}.creator-card{width:220px;padding:10px 14px}}
+@media(max-width:390px){.gallery{grid-template-columns:1fr}.thumb{height:220px}.quick-tags{display:none}}
 </style>
 </head>
 <body>
@@ -119,12 +134,78 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding:54px 0 24px;back
 
 <section class="section" id="creators">
   <div class="section-head"><div><div class="kicker">Good people, great pixels</div><h2>Meet the makers</h2><p class="section-sub">Independent creatives adding their perspective to the library.</p></div><a class="text-link" href="#creators">All creators ↗</a></div>
-  <div class="creator-grid">
-    <div class="creator-card"><img src="https://i.pravatar.cc/100?img=12" alt=""><div><strong>Noa Studio</strong><small>126 assets · Berlin</small></div></div>
-    <div class="creator-card"><img src="https://i.pravatar.cc/100?img=32" alt=""><div><strong>Studio Melt</strong><small>84 assets · London</small></div></div>
-    <div class="creator-card"><img src="https://i.pravatar.cc/100?img=47" alt=""><div><strong>Ellie Frames</strong><small>61 assets · Oslo</small></div></div>
-    <div class="creator-card"><img src="https://i.pravatar.cc/100?img=15" alt=""><div><strong>Render Room</strong><small>93 assets · Seoul</small></div></div>
-    <div class="creator-card"><img src="https://i.pravatar.cc/100?img=5" alt=""><div><strong>Type Foundry</strong><small>52 assets · Amsterdam</small></div></div>
+  <div class="makers-showcase">
+    <!-- Row 1: Right to Left (28s) -->
+    <div class="makers-marquee rail-1">
+      <div class="makers-track">
+        <div class="makers-group">
+          <div class="creator-card"><img src="https://i.pravatar.cc/100?img=12" alt=""><div><strong>Noa Studio</strong><small>142 assets · Berlin</small></div><span class="creator-pill">3D</span></div>
+          <div class="creator-card"><img src="https://i.pravatar.cc/100?img=32" alt=""><div><strong>Studio Melt</strong><small>98 assets · London</small></div><span class="creator-pill">Color</span></div>
+          <div class="creator-card"><img src="https://i.pravatar.cc/100?img=47" alt=""><div><strong>Ellie Frames</strong><small>67 assets · Oslo</small></div><span class="creator-pill">Nature</span></div>
+          <div class="creator-card"><img src="https://i.pravatar.cc/100?img=15" alt=""><div><strong>Render Room</strong><small>114 assets · Seoul</small></div><span class="creator-pill">CGI</span></div>
+          <div class="creator-card"><img src="https://i.pravatar.cc/100?img=5" alt=""><div><strong>Type Foundry</strong><small>58 assets · Amsterdam</small></div><span class="creator-pill">Type</span></div>
+          <div class="creator-card"><img src="https://i.pravatar.cc/100?img=60" alt=""><div><strong>Chroma Pulse</strong><small>86 assets · Tokyo</small></div><span class="creator-pill">Abstract</span></div>
+          <div class="creator-card"><img src="https://i.pravatar.cc/100?img=33" alt=""><div><strong>Velvet Noise</strong><small>73 assets · New York</small></div><span class="creator-pill">Texture</span></div>
+        </div>
+        <div class="makers-group" aria-hidden="true">
+          <div class="creator-card"><img src="https://i.pravatar.cc/100?img=12" alt=""><div><strong>Noa Studio</strong><small>142 assets · Berlin</small></div><span class="creator-pill">3D</span></div>
+          <div class="creator-card"><img src="https://i.pravatar.cc/100?img=32" alt=""><div><strong>Studio Melt</strong><small>98 assets · London</small></div><span class="creator-pill">Color</span></div>
+          <div class="creator-card"><img src="https://i.pravatar.cc/100?img=47" alt=""><div><strong>Ellie Frames</strong><small>67 assets · Oslo</small></div><span class="creator-pill">Nature</span></div>
+          <div class="creator-card"><img src="https://i.pravatar.cc/100?img=15" alt=""><div><strong>Render Room</strong><small>114 assets · Seoul</small></div><span class="creator-pill">CGI</span></div>
+          <div class="creator-card"><img src="https://i.pravatar.cc/100?img=5" alt=""><div><strong>Type Foundry</strong><small>58 assets · Amsterdam</small></div><span class="creator-pill">Type</span></div>
+          <div class="creator-card"><img src="https://i.pravatar.cc/100?img=60" alt=""><div><strong>Chroma Pulse</strong><small>86 assets · Tokyo</small></div><span class="creator-pill">Abstract</span></div>
+          <div class="creator-card"><img src="https://i.pravatar.cc/100?img=33" alt=""><div><strong>Velvet Noise</strong><small>73 assets · New York</small></div><span class="creator-pill">Texture</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2: Left to Right (38s) -->
+    <div class="makers-marquee rail-2">
+      <div class="makers-track">
+        <div class="makers-group">
+          <div class="creator-card"><img src="https://i.pravatar.cc/100?img=28" alt=""><div><strong>Lumina Art</strong><small>129 assets · Paris</small></div><span class="creator-pill">Photo</span></div>
+          <div class="creator-card"><img src="https://i.pravatar.cc/100?img=11" alt=""><div><strong>Aether Labs</strong><small>95 assets · Stockholm</small></div><span class="creator-pill">Surreal</span></div>
+          <div class="creator-card"><img src="https://i.pravatar.cc/100?img=41" alt=""><div><strong>Mono Form</strong><small>82 assets · Kyoto</small></div><span class="creator-pill">Minimal</span></div>
+          <div class="creator-card"><img src="https://i.pravatar.cc/100?img=22" alt=""><div><strong>Prism Studio</strong><small>105 assets · Toronto</small></div><span class="creator-pill">Render</span></div>
+          <div class="creator-card"><img src="https://i.pravatar.cc/100?img=53" alt=""><div><strong>Orbit Digital</strong><small>74 assets · Melbourne</small></div><span class="creator-pill">Sci-Fi</span></div>
+          <div class="creator-card"><img src="https://i.pravatar.cc/100?img=36" alt=""><div><strong>Paper & Grain</strong><small>63 assets · Zurich</small></div><span class="creator-pill">Analog</span></div>
+          <div class="creator-card"><img src="https://i.pravatar.cc/100?img=9" alt=""><div><strong>Solar Drift</strong><small>91 assets · Copenhagen</small></div><span class="creator-pill">Light</span></div>
+        </div>
+        <div class="makers-group" aria-hidden="true">
+          <div class="creator-card"><img src="https://i.pravatar.cc/100?img=28" alt=""><div><strong>Lumina Art</strong><small>129 assets · Paris</small></div><span class="creator-pill">Photo</span></div>
+          <div class="creator-card"><img src="https://i.pravatar.cc/100?img=11" alt=""><div><strong>Aether Labs</strong><small>95 assets · Stockholm</small></div><span class="creator-pill">Surreal</span></div>
+          <div class="creator-card"><img src="https://i.pravatar.cc/100?img=41" alt=""><div><strong>Mono Form</strong><small>82 assets · Kyoto</small></div><span class="creator-pill">Minimal</span></div>
+          <div class="creator-card"><img src="https://i.pravatar.cc/100?img=22" alt=""><div><strong>Prism Studio</strong><small>105 assets · Toronto</small></div><span class="creator-pill">Render</span></div>
+          <div class="creator-card"><img src="https://i.pravatar.cc/100?img=53" alt=""><div><strong>Orbit Digital</strong><small>74 assets · Melbourne</small></div><span class="creator-pill">Sci-Fi</span></div>
+          <div class="creator-card"><img src="https://i.pravatar.cc/100?img=36" alt=""><div><strong>Paper & Grain</strong><small>63 assets · Zurich</small></div><span class="creator-pill">Analog</span></div>
+          <div class="creator-card"><img src="https://i.pravatar.cc/100?img=9" alt=""><div><strong>Solar Drift</strong><small>91 assets · Copenhagen</small></div><span class="creator-pill">Light</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 3: Right to Left (21s) -->
+    <div class="makers-marquee rail-3">
+      <div class="makers-track">
+        <div class="makers-group">
+          <div class="creator-card"><img src="https://i.pravatar.cc/100?img=57" alt=""><div><strong>Neon Craft</strong><small>135 assets · Milan</small></div><span class="creator-pill">Glow</span></div>
+          <div class="creator-card"><img src="https://i.pravatar.cc/100?img=68" alt=""><div><strong>Flux Motion</strong><small>88 assets · Los Angeles</small></div><span class="creator-pill">Liquid</span></div>
+          <div class="creator-card"><img src="https://i.pravatar.cc/100?img=18" alt=""><div><strong>Kanso Spaces</strong><small>76 assets · Osaka</small></div><span class="creator-pill">Arch</span></div>
+          <div class="creator-card"><img src="https://i.pravatar.cc/100?img=49" alt=""><div><strong>Mirage Works</strong><small>99 assets · Berlin</small></div><span class="creator-pill">Real</span></div>
+          <div class="creator-card"><img src="https://i.pravatar.cc/100?img=25" alt=""><div><strong>Kinetic Wave</strong><small>110 assets · Singapore</small></div><span class="creator-pill">Motion</span></div>
+          <div class="creator-card"><img src="https://i.pravatar.cc/100?img=64" alt=""><div><strong>Rust & Bone</strong><small>54 assets · Montreal</small></div><span class="creator-pill">Raw</span></div>
+          <div class="creator-card"><img src="https://i.pravatar.cc/100?img=45" alt=""><div><strong>Sylvan Eye</strong><small>68 assets · Helsinki</small></div><span class="creator-pill">Scenery</span></div>
+        </div>
+        <div class="makers-group" aria-hidden="true">
+          <div class="creator-card"><img src="https://i.pravatar.cc/100?img=57" alt=""><div><strong>Neon Craft</strong><small>135 assets · Milan</small></div><span class="creator-pill">Glow</span></div>
+          <div class="creator-card"><img src="https://i.pravatar.cc/100?img=68" alt=""><div><strong>Flux Motion</strong><small>88 assets · Los Angeles</small></div><span class="creator-pill">Liquid</span></div>
+          <div class="creator-card"><img src="https://i.pravatar.cc/100?img=18" alt=""><div><strong>Kanso Spaces</strong><small>76 assets · Osaka</small></div><span class="creator-pill">Arch</span></div>
+          <div class="creator-card"><img src="https://i.pravatar.cc/100?img=49" alt=""><div><strong>Mirage Works</strong><small>99 assets · Berlin</small></div><span class="creator-pill">Real</span></div>
+          <div class="creator-card"><img src="https://i.pravatar.cc/100?img=25" alt=""><div><strong>Kinetic Wave</strong><small>110 assets · Singapore</small></div><span class="creator-pill">Motion</span></div>
+          <div class="creator-card"><img src="https://i.pravatar.cc/100?img=64" alt=""><div><strong>Rust & Bone</strong><small>54 assets · Montreal</small></div><span class="creator-pill">Raw</span></div>
+          <div class="creator-card"><img src="https://i.pravatar.cc/100?img=45" alt=""><div><strong>Sylvan Eye</strong><small>68 assets · Helsinki</small></div><span class="creator-pill">Scenery</span></div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
