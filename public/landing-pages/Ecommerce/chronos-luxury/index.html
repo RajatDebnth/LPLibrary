@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CHRONOS — The Obsidian Tourbillon Edition</title>
+  <meta name="description" content="Handcrafted in Geneva. Forged from aerospace-grade Grade 5 titanium with perpetual obsidian movement.">
+  <meta name="keywords" content="Luxury, Watch, Ecommerce, Horology, Titanium">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #070709; color: #edeef2; }
+    .serif { font-family: 'Cinzel', serif; }
+  </style>
+</head>
+<body class="selection:bg-amber-400/20 selection:text-amber-300">
+  <!-- Nav -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-[#070709]/80 backdrop-blur-lg border-b border-white/5 px-8 py-6 flex items-center justify-between">
+    <div class="serif text-xl tracking-[0.25em] text-white font-semibold">CHRONOS</div>
+    <div class="hidden md:flex space-x-10 text-xs uppercase tracking-[0.2em] text-zinc-400">
+      <a href="#" class="hover:text-white transition">Collection</a>
+      <a href="#" class="hover:text-white transition">Horology</a>
+      <a href="#" class="hover:text-white transition">Atelier</a>
+      <a href="#" class="hover:text-white transition">Bespoke</a>
+    </div>
+    <div class="text-xs uppercase tracking-[0.15em] text-zinc-400 flex items-center space-x-6">
+      <span class="text-amber-200/80">Edition 01 / 50</span>
+      <button class="px-4 py-2 border border-white/20 rounded-full hover:border-white transition">Reserve</button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="min-h-screen pt-32 pb-24 px-6 flex flex-col items-center justify-center text-center relative overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(245,158,11,0.06)_0%,transparent_60%)] pointer-events-none"></div>
+
+    <p class="text-xs uppercase tracking-[0.35em] text-amber-300/80 mb-6 font-medium">Geneva High Horology</p>
+
+    <h1 class="serif text-5xl md:text-8xl tracking-tight text-white mb-6 font-normal">
+      OBSIDIAN NOCTURNE
+    </h1>
+
+    <p class="text-zinc-400 max-w-xl mx-auto text-base leading-relaxed mb-10 font-light">
+      Milled from a singular monobloc of recrystallized titanium carbide. Featuring a flying tri-axial tourbillon with 72-hour power reserve.
+    </p>
+
+    <!-- Watch Visual Render representation -->
+    <div class="relative w-72 h-72 md:w-96 md:h-96 mx-auto my-6 flex items-center justify-center">
+      <div class="w-full h-full rounded-full border border-amber-500/20 bg-gradient-to-br from-zinc-900 to-black p-4 flex items-center justify-center shadow-[0_0_80px_-20px_rgba(245,158,11,0.2)]">
+        <div class="w-full h-full rounded-full border border-white/10 flex flex-col items-center justify-center relative">
+          <!-- Dial markers -->
+          <div class="absolute top-4 text-xs font-mono text-zinc-500">XII</div>
+          <div class="absolute bottom-4 text-xs font-mono text-zinc-500">VI</div>
+          <div class="absolute left-4 text-xs font-mono text-zinc-500">IX</div>
+          <div class="absolute right-4 text-xs font-mono text-zinc-500">III</div>
+          <!-- Tourbillon cage graphic -->
+          <div class="w-20 h-20 rounded-full border border-amber-400/40 animate-[spin_12s_linear_infinite] flex items-center justify-center">
+            <div class="w-10 h-10 border-t-2 border-r-2 border-cyan-400 rounded-full"></div>
+          </div>
+          <div class="text-[10px] tracking-[0.3em] uppercase text-zinc-500 mt-4 serif">CHRONOS GENEVE</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex items-center space-x-6 mt-8">
+      <div class="text-left">
+        <div class="text-xs text-zinc-500 uppercase tracking-widest">Price</div>
+        <div class="serif text-2xl text-white font-medium">$48,500 USD</div>
+      </div>
+      <button class="px-8 py-3.5 bg-amber-200 text-black font-medium tracking-wide uppercase text-xs rounded-full hover:bg-amber-100 transition shadow-lg shadow-amber-200/10">
+        Acquire Piece
+      </button>
+    </div>
+  </section>
+</body>
+</html>
+

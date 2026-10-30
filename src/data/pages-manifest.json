@@ -1,0 +1,84 @@
+{
+  "scannedAt": "2026-10-30T05:09:56.739Z",
+  "totalCount": 4,
+  "categories": [
+    "Business",
+    "Ecommerce",
+    "Portfolio",
+    "SaaS"
+  ],
+  "pages": [
+    {
+      "id": "business-vanguard-capital",
+      "title": "Vanguard Global — Private Equity & Frontier Growth Advisory",
+      "description": "Strategic capital deployment and cross-border M&A advisory for transformative technology enterprises.",
+      "category": "Business",
+      "categorySlug": "business",
+      "url": "/landing-pages/Business/vanguard-capital/index.html",
+      "fileName": "index.html",
+      "folder": "Business/vanguard-capital",
+      "tags": [
+        "Business",
+        "Venture Capital",
+        "Private Equity",
+        "Advisory",
+        "Finance"
+      ],
+      "updatedAt": "2026-10-29T22:32:01.577Z"
+    },
+    {
+      "id": "saas-apex-ai",
+      "title": "Apex AI — Next-Gen Autonomous Intelligence Platform",
+      "description": "Build, simulate and deploy enterprise-grade autonomous agents with zero latency and end-to-end cryptographic verifiability.",
+      "category": "SaaS",
+      "categorySlug": "saas",
+      "url": "/landing-pages/SaaS/apex-ai/index.html",
+      "fileName": "index.html",
+      "folder": "SaaS/apex-ai",
+      "tags": [
+        "AI",
+        "Autonomous Agents",
+        "SaaS",
+        "Enterprise",
+        "Machine Learning"
+      ],
+      "updatedAt": "2026-10-29T22:31:53.767Z"
+    },
+    {
+      "id": "portfolio-elena-rostova",
+      "title": "Elena Rostova — Principal Design Engineer & Art Director",
+      "description": "Portfolio of Elena Rostova. Crafting digital products, interactive systems, and spatial interfaces for forward-thinking technology companies.",
+      "category": "Portfolio",
+      "categorySlug": "portfolio",
+      "url": "/landing-pages/Portfolio/elena-rostova/index.html",
+      "fileName": "index.html",
+      "folder": "Portfolio/elena-rostova",
+      "tags": [
+        "Portfolio",
+        "Design Engineer",
+        "Art Director",
+        "Creative Development",
+        "Minimalist"
+      ],
+      "updatedAt": "2026-10-29T22:31:53.572Z"
+    },
+    {
+      "id": "ecommerce-chronos-luxury",
+      "title": "CHRONOS — The Obsidian Tourbillon Edition",
+      "description": "Handcrafted in Geneva. Forged from aerospace-grade Grade 5 titanium with perpetual obsidian movement.",
+      "category": "Ecommerce",
+      "categorySlug": "ecommerce",
+      "url": "/landing-pages/Ecommerce/chronos-luxury/index.html",
+      "fileName": "index.html",
+      "folder": "Ecommerce/chronos-luxury",
+      "tags": [
+        "Luxury",
+        "Watch",
+        "Ecommerce",
+        "Horology",
+        "Titanium"
+      ],
+      "updatedAt": "2026-10-29T22:31:53.438Z"
+    }
+  ]
+}
