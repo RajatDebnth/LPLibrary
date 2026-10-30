@@ -1,5 +1,5 @@
 {
-  "scannedAt": "2026-10-30T14:34:40.973Z",
+  "scannedAt": "2026-10-30T14:44:25.796Z",
   "totalCount": 5,
   "categories": [
     "Business",
@@ -8,6 +8,23 @@
     "SaaS"
   ],
   "pages": [
+    {
+      "id": "business-signal_social",
+      "title": "Signal Social — Make your brand impossible to scroll past",
+      "description": "Signal Social helps ambitious brands turn attention into community, customers and measurable growth.",
+      "category": "Business",
+      "categorySlug": "business",
+      "url": "/landing-pages/Business/Signal_Social/index.html",
+      "fileName": "index.html",
+      "folder": "Business/Signal_Social",
+      "tags": [],
+      "updatedAt": "2026-10-30T14:44:12.284Z",
+      "author": "Personal Project",
+      "avatarGradient": "from-amber-400 to-orange-500",
+      "initialLikes": 125,
+      "viewsCount": "2.5k",
+      "isPro": true
+    },
     {
       "id": "business-forma",
       "title": "Forma — A library for visual minds",
@@ -57,23 +74,6 @@
       "avatarGradient": "from-emerald-400 to-teal-500",
       "initialLikes": 206,
       "viewsCount": "2.2k",
-      "isPro": true
-    },
-    {
-      "id": "business-signal_social",
-      "title": "Signal Social — Make your brand impossible to scroll past",
-      "description": "Signal Social helps ambitious brands turn attention into community, customers and measurable growth.",
-      "category": "Business",
-      "categorySlug": "business",
-      "url": "/landing-pages/Business/Signal_Social/index.html",
-      "fileName": "index.html",
-      "folder": "Business/Signal_Social",
-      "tags": [],
-      "updatedAt": "2026-10-30T10:07:49.788Z",
-      "author": "Personal Project",
-      "avatarGradient": "from-amber-400 to-orange-500",
-      "initialLikes": 125,
-      "viewsCount": "2.5k",
       "isPro": true
     },
     {
