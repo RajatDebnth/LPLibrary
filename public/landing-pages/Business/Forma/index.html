@@ -36,8 +36,24 @@ h1{font:800 clamp(44px,6.2vw,82px)/1.05 Manrope;letter-spacing:-.065em;max-width
 .filterbar{display:flex;gap:8px;flex-wrap:wrap;margin:25px 0}.filter{padding:9px 15px;border:1px solid var(--line);background:#121217;color:#aaa8b6;border-radius:999px;font-size:13px}.filter.active,.filter:hover{background:#29213e;border-color:#7758ce;color:white}
 .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:17px}.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:.25s;min-width:0}.card:hover{transform:translateY(-5px);border-color:#6c58a8;box-shadow:0 20px 45px #0005}.thumb{height:235px;position:relative;overflow:hidden;background:#1c1a25}.thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:.5s}.card:hover .thumb img{transform:scale(1.06)}.save{position:absolute;top:12px;right:12px;width:34px;height:34px;border:1px solid #ffffff40;border-radius:50%;background:#111a;color:#fff;font-size:16px;backdrop-filter:blur(10px)}.save.saved{background:#8b5cf6;border-color:#8b5cf6}.type{position:absolute;bottom:12px;left:12px;padding:6px 9px;border-radius:7px;background:#09090dcc;border:1px solid #ffffff25;font-size:10px;text-transform:uppercase;letter-spacing:.08em}
 .card-info{padding:15px 16px 16px}.card-title{font-weight:700;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.card-meta{display:flex;align-items:center;justify-content:space-between;color:#92909e;font-size:12px;margin-top:10px}.creator{display:flex;align-items:center;gap:7px}.avatar{width:22px;height:22px;border-radius:50%;object-fit:cover}.stats{display:flex;gap:11px}
-.feature-band{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}.feature{border:1px solid var(--line);border-radius:24px;background:radial-gradient(circle at 80% 20%,#49308a44,transparent 40%),#111116;padding:38px;min-height:280px;position:relative;overflow:hidden}.feature h3{font:800 30px Manrope;letter-spacing:-.04em;margin:14px 0 10px;max-width:390px}.feature p{color:#aaa8b5;max-width:390px;line-height:1.6}.feature .btn{display:inline-block;margin-top:14px}.feature-visual{position:absolute;right:3%;bottom:-25px;width:40%;height:78%;border-radius:20px;transform:rotate(8deg);background:linear-gradient(145deg,#ffb7a1,#b46bff 45%,#4c61db);box-shadow:0 25px 70px #0008}.feature-visual:before,.feature-visual:after{content:"";position:absolute;border-radius:50%;background:#f9e6c6;filter:blur(1px)}.feature-visual:before{width:130px;height:130px;top:17%;left:20%;box-shadow:45px 70px 0 -20px #3c276e}.feature-visual:after{width:60px;height:60px;right:12%;bottom:18%;background:#62e4d1}
-.feature.small{background:radial-gradient(circle at 75% 15%,#2b6e7950,transparent 45%),#111116}.feature.small .feature-visual{background:linear-gradient(145deg,#d8ffb0,#55d7c7 50%,#5660e9);width:34%;right:5%;transform:rotate(-8deg)}.feature.small .feature-visual:before{background:#f7f2e9;box-shadow:55px 60px 0 -10px #8b5cf6}
+.feature-band{display:grid;grid-template-columns:1.15fr .85fr;gap:20px}
+.feature{border:1px solid var(--line);border-radius:24px;background:radial-gradient(circle at 80% 20%,#49308a35,transparent 50%),#111116;padding:36px 38px;min-height:290px;position:relative;overflow:hidden;display:flex;justify-content:space-between;align-items:center;gap:22px;transition:transform .35s cubic-bezier(.2,0,.2,1),border-color .35s ease,box-shadow .35s ease;cursor:pointer}
+.feature:hover{transform:translateY(-7px);border-color:rgba(139,92,246,.55);box-shadow:0 24px 60px -10px rgba(0,0,0,.65),0 0 35px -5px rgba(139,92,246,.2)}
+.feature.small{background:radial-gradient(circle at 80% 20%,#2b6e7935,transparent 50%),#111116}
+.feature.small:hover{border-color:rgba(85,215,199,.55);box-shadow:0 24px 60px -10px rgba(0,0,0,.65),0 0 35px -5px rgba(85,215,199,.2)}
+.feature-content{position:relative;z-index:2;max-width:380px}
+.feature h3{font:800 30px Manrope;letter-spacing:-.04em;margin:14px 0 10px;transition:color .25s ease}
+.feature:hover h3{color:#fff}
+.feature p{color:#aaa8b5;max-width:390px;line-height:1.6;font-size:14px}
+.feature .btn{display:inline-flex;align-items:center;gap:8px;margin-top:18px;transition:transform .2s ease,box-shadow .2s ease}
+.feature:hover .btn{transform:translateX(4px);box-shadow:0 6px 20px rgba(85,72,235,.4)}
+.feature-visual{position:relative;width:220px;height:210px;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.16);transform:rotate(6deg) translateY(4px);box-shadow:0 20px 50px rgba(0,0,0,.6);transition:transform .4s cubic-bezier(.2,0,.2,1),box-shadow .4s ease;flex-shrink:0;z-index:1}
+.feature.small .feature-visual{transform:rotate(-6deg) translateY(4px)}
+.feature:hover .feature-visual{transform:rotate(2deg) translateY(-8px) scale(1.05);box-shadow:0 28px 65px rgba(0,0,0,.75)}
+.feature.small:hover .feature-visual{transform:rotate(-2deg) translateY(-8px) scale(1.05);box-shadow:0 28px 65px rgba(0,0,0,.75)}
+.feature-visual img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.2,0,.2,1),filter .4s ease;filter:saturate(1.1) brightness(.95)}
+.feature:hover .feature-visual img{transform:scale(1.08);filter:saturate(1.2) brightness(1.05)}
+.visual-badge{position:absolute;bottom:12px;right:12px;padding:5px 9px;border-radius:7px;background:rgba(9,9,13,.75);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;backdrop-filter:blur(8px)}
 .makers-showcase{display:flex;flex-direction:column;gap:14px;overflow:hidden;width:calc(100% + 8vw);margin-left:-4vw;padding:12px 0;mask-image:linear-gradient(90deg,transparent 0%,#000 6%,#000 94%,transparent 100%);-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 6%,#000 94%,transparent 100%)}
 .makers-marquee{display:flex;overflow:hidden;white-space:nowrap;width:100%}
 .makers-track{display:flex;width:max-content;will-change:transform}
@@ -58,7 +74,7 @@ h1{font:800 clamp(44px,6.2vw,82px)/1.05 Manrope;letter-spacing:-.065em;max-width
 footer{margin-top:80px;border-top:1px solid var(--line);padding:54px 0 24px;background:#0c0c10}.footer-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:45px}.footer-brand p{max-width:290px;color:#92909d;line-height:1.7;font-size:13px}.socials{display:flex;gap:8px;margin-top:18px}.socials a{width:34px;height:34px;border:1px solid var(--line);border-radius:10px;display:grid;place-items:center;color:#bbb}.footer-col strong{display:block;font-size:13px;margin-bottom:17px}.footer-col a{display:block;color:#9997a5;font-size:13px;margin:12px 0}.footer-col a:hover{color:#fff}.footer-bottom{border-top:1px solid var(--line);margin-top:42px;padding-top:20px;display:flex;justify-content:space-between;color:#777582;font-size:11px}
 .empty{grid-column:1/-1;text-align:center;color:#aaa;padding:55px;border:1px dashed var(--line);border-radius:18px}
 @media(max-width:1000px){.gallery{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:700px){.container{width:min(100% - 34px,600px)}nav{height:70px}.navlinks,.navright .ghost{display:none}.menu{display:block}.navright .primary{padding:10px 13px}.hero{padding:70px 0 35px}h1{font-size:47px}.hero p{font-size:15px}.search-wrap{margin-top:27px}.search-wrap button{padding:13px 16px}.hero-art{margin:40px -4vw 0;width:calc(100% + 8vw)}.art-tile{width:160px;height:120px;border-radius:13px}.section{padding:55px 0}.section-head{align-items:start;flex-direction:column}.gallery{grid-template-columns:repeat(2,1fr);gap:11px}.thumb{height:175px}.card-info{padding:12px}.card-title{font-size:13px}.card-meta{font-size:10px}.stats{gap:6px}.feature-band{grid-template-columns:1fr}.feature{min-height:260px;padding:27px}.feature h3{font-size:26px;max-width:260px}.feature p{max-width:250px}.feature-visual{width:34%;right:-3%;height:65%}.newsletter{padding:28px;align-items:start;flex-direction:column}.newsletter h2{font-size:25px}.footer-grid{grid-template-columns:repeat(2,1fr);gap:30px}.footer-brand{grid-column:1/-1}.footer-bottom{gap:12px;flex-direction:column}.creator-card{width:220px;padding:10px 14px}}
+@media(max-width:700px){.container{width:min(100% - 34px,600px)}nav{height:70px}.navlinks,.navright .ghost{display:none}.menu{display:block}.navright .primary{padding:10px 13px}.hero{padding:70px 0 35px}h1{font-size:47px}.hero p{font-size:15px}.search-wrap{margin-top:27px}.search-wrap button{padding:13px 16px}.hero-art{margin:40px -4vw 0;width:calc(100% + 8vw)}.art-tile{width:160px;height:120px;border-radius:13px}.section{padding:55px 0}.section-head{align-items:start;flex-direction:column}.gallery{grid-template-columns:repeat(2,1fr);gap:11px}.thumb{height:175px}.card-info{padding:12px}.card-title{font-size:13px}.card-meta{font-size:10px}.stats{gap:6px}.feature-band{grid-template-columns:1fr}.feature{flex-direction:column;align-items:start;min-height:auto;padding:30px 24px;gap:20px}.feature-content{max-width:100%}.feature h3{font-size:26px;max-width:100%}.feature p{max-width:100%}.feature-visual{width:100%;height:180px;transform:none!important;margin-top:10px}.newsletter{padding:28px;align-items:start;flex-direction:column}.newsletter h2{font-size:25px}.footer-grid{grid-template-columns:repeat(2,1fr);gap:30px}.footer-brand{grid-column:1/-1}.footer-bottom{gap:12px;flex-direction:column}.creator-card{width:220px;padding:10px 14px}}
 @media(max-width:390px){.gallery{grid-template-columns:1fr}.thumb{height:220px}.quick-tags{display:none}}
 </style>
 </head>
@@ -127,8 +143,31 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding:54px 0 24px;back
 <section class="section" id="collections">
   <div class="section-head"><div><div class="kicker">A shortcut to inspiration</div><h2>Collections with a point of view</h2><p class="section-sub">Thoughtfully gathered visual worlds for wherever your mind wanders.</p></div><a class="text-link" href="#collections">Explore collections ↗</a></div>
   <div class="feature-band">
-    <div class="feature"><div class="kicker">Collection 01 · 48 assets</div><h3>Objects from another orbit.</h3><p>Unexpected shapes, playful dimensions and surreal 3D forms for ideas that refuse to stay ordinary.</p><a class="btn" href="#explore">Explore the collection ↗</a><div class="feature-visual"></div></div>
-    <div class="feature small"><div class="kicker">Collection 02 · 32 assets</div><h3>Slow days, soft light.</h3><p>Quiet tones and considered compositions. A little breathing room for your canvas.</p><a class="btn" href="#explore">Explore the collection ↗</a><div class="feature-visual"></div></div>
+    <div class="feature">
+      <div class="feature-content">
+        <div class="kicker">Collection 01 · 48 assets</div>
+        <h3>Objects from another orbit.</h3>
+        <p>Unexpected shapes, playful dimensions and surreal 3D forms for ideas that refuse to stay ordinary.</p>
+        <a class="btn" href="#explore">Explore the collection ↗</a>
+      </div>
+      <div class="feature-visual">
+        <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?w=800&q=85" alt="Realistic 3D iridescent sculpture" loading="lazy">
+        <div class="visual-badge">Surreal 3D</div>
+      </div>
+    </div>
+
+    <div class="feature small">
+      <div class="feature-content">
+        <div class="kicker">Collection 02 · 32 assets</div>
+        <h3>Slow days, soft light.</h3>
+        <p>Quiet tones and considered compositions. A little breathing room for your canvas.</p>
+        <a class="btn" href="#explore">Explore the collection ↗</a>
+      </div>
+      <div class="feature-visual">
+        <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=800&q=85" alt="Soft light architectural interior" loading="lazy">
+        <div class="visual-badge">Quiet Minimal</div>
+      </div>
+    </div>
   </div>
 </section>
 
