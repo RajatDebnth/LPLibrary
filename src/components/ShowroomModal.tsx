@@ -244,7 +244,7 @@ export const ShowroomModal: React.FC<ShowroomModalProps> = ({
         <div className={`transition-all duration-300 bg-black overflow-hidden flex flex-col my-auto ${getViewportWidth()}`}>
           <iframe
             key={page.id}
-            src={page.url}
+            src={`${page.url}?v=${Date.parse(page.updatedAt) || '1'}`}
             title={page.title}
             className="w-full h-full border-0 bg-white"
             sandbox="allow-scripts allow-same-origin allow-forms allow-popups"

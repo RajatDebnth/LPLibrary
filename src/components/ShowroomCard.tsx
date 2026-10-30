@@ -53,7 +53,7 @@ export const ShowroomCard: React.FC<ShowroomCardProps> = ({
         {/* Live Miniature Iframe */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <iframe
-            src={page.url}
+            src={`${page.url}?v=${Date.parse(page.updatedAt) || '1'}`}
             title={page.title}
             onLoad={() => setIsIframeLoaded(true)}
             sandbox="allow-scripts allow-same-origin"
