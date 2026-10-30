@@ -19,12 +19,9 @@ export const ShowroomHeader: React.FC = () => {
               </svg>
             </div>
           </div>
-          <div className="flex items-baseline space-x-1.5">
+          <div className="flex items-center">
             <span className="text-xl font-bold tracking-tight text-white font-sans">
               Landing<span className="text-[#EA4C89]">Vault</span>
-            </span>
-            <span className="hidden sm:inline-block text-[9px] uppercase font-bold tracking-widest px-1.5 py-0.5 rounded bg-[#EA4C89]/20 text-[#EA4C89] border border-[#EA4C89]/30">
-              CREATOR
             </span>
           </div>
         </a>

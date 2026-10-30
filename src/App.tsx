@@ -308,14 +308,8 @@ export default function App() {
             </div>
           </div>
 
-          <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500">
-            <div>
-              © 2026 LandingVault • Personal Showcase. All rights reserved.
-            </div>
-            <div className="flex items-center space-x-2">
-              <span className="w-2 h-2 rounded-full bg-[#EA4C89] animate-pulse"></span>
-              <span>100% Coded HTML Fidelity • Zero Database • Git & Vercel Driven</span>
-            </div>
+          <div className="pt-8 text-center sm:text-left text-xs text-zinc-500">
+            © 2026 LandingVault • Personal Showcase. All rights reserved.
           </div>
         </div>
       </footer>
