@@ -1,5 +1,5 @@
 {
-  "scannedAt": "2026-10-30T05:09:56.739Z",
+  "scannedAt": "2026-10-30T05:36:41.032Z",
   "totalCount": 4,
   "categories": [
     "Business",
@@ -24,7 +24,12 @@
         "Advisory",
         "Finance"
       ],
-      "updatedAt": "2026-10-29T22:32:01.577Z"
+      "updatedAt": "2026-10-29T22:32:01.577Z",
+      "author": "Stratos Group",
+      "avatarGradient": "from-pink-500 to-rose-500",
+      "initialLikes": 198,
+      "viewsCount": "4.6k",
+      "isPro": true
     },
     {
       "id": "saas-apex-ai",
@@ -42,7 +47,12 @@
         "Enterprise",
         "Machine Learning"
       ],
-      "updatedAt": "2026-10-29T22:31:53.767Z"
+      "updatedAt": "2026-10-29T22:31:53.767Z",
+      "author": "LinearCraft",
+      "avatarGradient": "from-pink-500 to-rose-500",
+      "initialLikes": 158,
+      "viewsCount": "4.2k",
+      "isPro": true
     },
     {
       "id": "portfolio-elena-rostova",
@@ -60,7 +70,12 @@
         "Creative Development",
         "Minimalist"
       ],
-      "updatedAt": "2026-10-29T22:31:53.572Z"
+      "updatedAt": "2026-10-29T22:31:53.572Z",
+      "author": "Julian Thorne",
+      "avatarGradient": "from-amber-400 to-orange-500",
+      "initialLikes": 201,
+      "viewsCount": "2.1k",
+      "isPro": false
     },
     {
       "id": "ecommerce-chronos-luxury",
@@ -78,7 +93,12 @@
         "Horology",
         "Titanium"
       ],
-      "updatedAt": "2026-10-29T22:31:53.438Z"
+      "updatedAt": "2026-10-29T22:31:53.438Z",
+      "author": "Luxe Collective",
+      "avatarGradient": "from-emerald-400 to-teal-500",
+      "initialLikes": 67,
+      "viewsCount": "2.9k",
+      "isPro": false
     }
   ]
 }

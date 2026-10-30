@@ -62,6 +62,47 @@ function extractMetadata(htmlContent, fallbackName) {
   return { title, description, tags };
 }
 
+function stringToHash(str) {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    hash = (hash << 5) - hash + str.charCodeAt(i);
+    hash |= 0;
+  }
+  return Math.abs(hash);
+}
+
+function getAuthorInfo(id, category, fallbackName) {
+  const hash = stringToHash(id);
+  const avatars = [
+    'from-pink-500 to-rose-500',
+    'from-purple-500 to-indigo-500',
+    'from-cyan-400 to-blue-500',
+    'from-amber-400 to-orange-500',
+    'from-emerald-400 to-teal-500',
+  ];
+  const avatarGradient = avatars[hash % avatars.length];
+  const initialLikes = (hash % 180) + 48;
+  const initialViews = ((hash % 38) + 12) / 10; // e.g. 1.2k - 4.9k
+
+  const names = {
+    SaaS: ['Apex Studio', 'Nexus Labs', 'LinearCraft', 'HyperCloud'],
+    Ecommerce: ['Maison Horology', 'Atelier Mode', 'Verve Retail', 'Luxe Collective'],
+    Portfolio: ['Elena Rostova', 'Julian Thorne', 'Studio Koto', 'Arlo Vance'],
+    Business: ['Vanguard Capital', 'Aether Advisory', 'Stratos Group', 'Monolith Ventures'],
+  };
+
+  const pool = names[category] || ['Creative Studio', 'Design Lab', 'Pixel Co'];
+  const authorName = pool[hash % pool.length];
+
+  return {
+    author: authorName,
+    avatarGradient,
+    initialLikes,
+    viewsCount: `${initialViews.toFixed(1)}k`,
+    isPro: hash % 2 === 0,
+  };
+}
+
 function scanDirectory(baseDir) {
   const pages = [];
   const categoriesSet = new Set();
@@ -80,7 +121,6 @@ function scanDirectory(baseDir) {
       const category = formatCategory(categoryRaw);
       categoriesSet.add(category);
 
-      // Look inside category folder for html files or sub-folders
       const subEntries = fs.readdirSync(fullPath, { withFileTypes: true });
 
       for (const sub of subEntries) {
@@ -95,6 +135,7 @@ function scanDirectory(baseDir) {
 
           const relativeUrl = `/landing-pages/${encodeURIComponent(categoryRaw)}/${encodeURIComponent(sub.name)}`;
           const id = `${categoryRaw}-${fallbackName}`.toLowerCase().replace(/[^a-z0-9_-]/g, '-');
+          const authorInfo = getAuthorInfo(id, category, fallbackName);
 
           pages.push({
             id,
@@ -107,14 +148,13 @@ function scanDirectory(baseDir) {
             folder: categoryRaw,
             tags: meta.tags,
             updatedAt: stats.mtime.toISOString(),
+            ...authorInfo,
           });
         } else if (sub.isDirectory()) {
-          // Folder with index.html (or any .html file)
           const indexHtmlPath = path.join(subPath, 'index.html');
           let targetHtmlPath = fs.existsSync(indexHtmlPath) ? indexHtmlPath : null;
 
           if (!targetHtmlPath) {
-            // Find first html file in this folder
             const nestedFiles = fs.readdirSync(subPath).filter(f => f.toLowerCase().endsWith('.html'));
             if (nestedFiles.length > 0) {
               targetHtmlPath = path.join(subPath, nestedFiles[0]);
@@ -130,6 +170,7 @@ function scanDirectory(baseDir) {
 
             const relativeUrl = `/landing-pages/${encodeURIComponent(categoryRaw)}/${encodeURIComponent(sub.name)}/${encodeURIComponent(targetHtmlName)}`;
             const id = `${categoryRaw}-${sub.name}`.toLowerCase().replace(/[^a-z0-9_-]/g, '-');
+            const authorInfo = getAuthorInfo(id, category, fallbackName);
 
             pages.push({
               id,
@@ -142,12 +183,12 @@ function scanDirectory(baseDir) {
               folder: `${categoryRaw}/${sub.name}`,
               tags: meta.tags,
               updatedAt: stats.mtime.toISOString(),
+              ...authorInfo,
             });
           }
         }
       }
     } else if (entry.isFile() && entry.name.toLowerCase().endsWith('.html')) {
-      // Uncategorized root HTML file
       const category = 'General';
       categoriesSet.add(category);
       const stats = fs.statSync(fullPath);
@@ -157,6 +198,7 @@ function scanDirectory(baseDir) {
 
       const relativeUrl = `/landing-pages/${encodeURIComponent(entry.name)}`;
       const id = `general-${fallbackName}`.toLowerCase().replace(/[^a-z0-9_-]/g, '-');
+      const authorInfo = getAuthorInfo(id, category, fallbackName);
 
       pages.push({
         id,
@@ -169,6 +211,7 @@ function scanDirectory(baseDir) {
         folder: '',
         tags: meta.tags,
         updatedAt: stats.mtime.toISOString(),
+        ...authorInfo,
       });
     }
   }
@@ -195,4 +238,3 @@ try {
   console.error('[AutoScanner] Error scanning directory:', error);
   process.exit(1);
 }
-

@@ -9,6 +9,11 @@ export interface LandingPage {
   folder: string;
   tags: string[];
   updatedAt: string;
+  author: string;
+  avatarGradient: string;
+  initialLikes: number;
+  viewsCount: string;
+  isPro: boolean;
 }
 
 export interface PagesManifest {
@@ -20,5 +25,4 @@ export interface PagesManifest {
 
 export type ViewportMode = 'desktop' | 'tablet' | 'mobile';
 
-export type SortOption = 'newest' | 'oldest' | 'alphabetical';
-
+export type SortOption = 'popular' | 'newest' | 'alphabetical' | 'oldest';

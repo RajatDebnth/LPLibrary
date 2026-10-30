@@ -8,9 +8,9 @@
   }
 
   body {
-    background-color: #050608;
-    color: #F1F5F9;
-    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    background-color: #0D0C22;
+    color: #F3F4F6;
+    font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     overflow-x: hidden;
   }
 
@@ -20,59 +20,53 @@
     height: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: #050608;
+    background: #0D0C22;
   }
   ::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.16);
     border-radius: 9999px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 245, 255, 0.4);
+    background: #EA4C89;
   }
 }
 
-/* Sony luxury dark subtle grid overlay */
-.bg-showroom-grid {
+/* Dribbble warm ambient mesh */
+.bg-dribbble-mesh {
   background-image: 
-    radial-gradient(circle at 50% 0%, rgba(0, 245, 255, 0.08) 0%, transparent 65%),
-    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-  background-size: 100% 100%, 48px 48px, 48px 48px;
+    radial-gradient(circle at 50% 0%, rgba(234, 76, 137, 0.09) 0%, transparent 60%),
+    radial-gradient(circle at 100% 30%, rgba(99, 102, 241, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 0% 70%, rgba(234, 76, 137, 0.05) 0%, transparent 50%);
 }
 
 /* Glassmorphism panel */
 .glass-panel {
-  background: rgba(11, 13, 19, 0.7);
+  background: rgba(21, 20, 38, 0.75);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.07);
 }
 
 .glass-pill {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.04);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-pill:hover {
-  background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.16);
 }
 
-.glass-pill-active {
-  background: rgba(0, 245, 255, 0.1);
-  border-color: rgba(0, 245, 255, 0.4);
-  color: #00F5FF;
-  box-shadow: 0 0 20px -3px rgba(0, 245, 255, 0.25);
+.dribbble-pill-active {
+  background: #EA4C89;
+  border-color: #EA4C89;
+  color: #FFFFFF;
+  box-shadow: 0 4px 18px -2px rgba(234, 76, 137, 0.45);
 }
 
-/* Ambient glow accents */
-.cyan-text-glow {
-  text-shadow: 0 0 25px rgba(0, 245, 255, 0.45);
+/* Brand wordmark styling */
+.dribbble-script {
+  font-family: 'Instrument Serif', Georgia, serif;
 }
-
-.cyan-box-glow {
-  box-shadow: 0 0 35px -5px rgba(0, 245, 255, 0.3);
-}
-

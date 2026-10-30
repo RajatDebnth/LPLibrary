@@ -5,26 +5,32 @@ export default {
   theme: {
     extend: {
       colors: {
-        showroom: {
-          void: '#050608',       // Pure ultra-deep black/obsidian
-          surface: '#0B0D13',    // Dark obsidian card/panel background
-          card: '#10131B',       // Elevated surface
-          cardHover: '#151924',  // Active/hover surface
+        dribbble: {
+          pink: '#EA4C89',
+          pinkHover: '#F06292',
+          pinkLight: 'rgba(234, 76, 137, 0.12)',
+          dark: '#0D0C22',
+          surface: '#151426',
+          card: '#1C1B30',
+          cardHover: '#22213A',
           border: 'rgba(255, 255, 255, 0.08)',
-          borderHover: 'rgba(0, 245, 255, 0.3)',
-          subtle: '#7E8698',
-          muted: '#4B5364',
-          highlight: 'rgba(255, 255, 255, 0.04)',
+          borderHover: 'rgba(234, 76, 137, 0.4)',
+          text: '#F3F4F6',
+          muted: '#9E9EA7',
+          tag: 'rgba(255, 255, 255, 0.06)',
         },
-        accent: {
-          cyan: '#00F5FF',
-          sky: '#38BDF8',
-          blue: '#2563EB',
-          glow: 'rgba(0, 245, 255, 0.15)',
+        showroom: {
+          void: '#0A0915',
+          surface: '#121124',
+          card: '#18172E',
+          cardHover: '#201F3B',
+          border: 'rgba(255, 255, 255, 0.08)',
+          borderHover: 'rgba(234, 76, 137, 0.35)',
         },
       },
       fontFamily: {
         sans: [
+          'Outfit',
           'Inter',
           '-apple-system',
           'BlinkMacSystemFont',
@@ -32,30 +38,31 @@ export default {
           'Roboto',
           'sans-serif',
         ],
+        serif: ['Instrument Serif', 'Georgia', 'serif'],
         mono: ['JetBrains Mono', 'Menlo', 'Monaco', 'monospace'],
       },
       boxShadow: {
-        'luxury-card': '0 20px 40px -15px rgba(0, 0, 0, 0.7), 0 0 1px 1px rgba(255, 255, 255, 0.08)',
-        'luxury-hover': '0 30px 60px -15px rgba(0, 0, 0, 0.9), 0 0 25px -5px rgba(0, 245, 255, 0.25), 0 0 1px 1px rgba(0, 245, 255, 0.4)',
-        'cyan-glow': '0 0 30px -5px rgba(0, 245, 255, 0.35)',
-        'subtle-glow': '0 0 50px -10px rgba(56, 189, 248, 0.12)',
+        'dribbble-shot': '0 12px 32px -8px rgba(0, 0, 0, 0.5), 0 0 1px 1px rgba(255, 255, 255, 0.06)',
+        'dribbble-hover': '0 24px 48px -12px rgba(0, 0, 0, 0.8), 0 0 25px -4px rgba(234, 76, 137, 0.25), 0 0 1px 1px rgba(234, 76, 137, 0.35)',
+        'pink-glow': '0 0 25px -3px rgba(234, 76, 137, 0.45)',
+        'pill': '0 4px 14px 0 rgba(0, 0, 0, 0.3)',
       },
       animation: {
-        'fade-in': 'fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-        'pulse-subtle': 'pulseSubtle 4s ease-in-out infinite',
+        'fade-in': 'fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'heart-burst': 'heartBurst 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards',
       },
       keyframes: {
         fadeIn: {
-          '0%': { opacity: '0', transform: 'translateY(8px)' },
+          '0%': { opacity: '0', transform: 'translateY(6px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
-        pulseSubtle: {
-          '0%, 100%': { opacity: '0.4' },
-          '50%': { opacity: '0.8' },
+        heartBurst: {
+          '0%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.35)' },
+          '100%': { transform: 'scale(1)' },
         },
       },
     },
   },
   plugins: [],
 };
-

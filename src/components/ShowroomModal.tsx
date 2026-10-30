@@ -9,7 +9,8 @@ import {
   Check,
   ChevronLeft,
   ChevronRight,
-  Folder,
+  Heart,
+  Bookmark,
 } from 'lucide-react';
 import { LandingPage, ViewportMode } from '../types';
 
@@ -22,6 +23,12 @@ interface ShowroomModalProps {
   hasNext: boolean;
   currentIndex: number;
   totalCount: number;
+  isLiked: boolean;
+  isSaved: boolean;
+  likeCount: number;
+  onToggleLike: (e: React.MouseEvent, pageId: string) => void;
+  onToggleSave: (e: React.MouseEvent, pageId: string) => void;
+  onSelectTag: (tag: string) => void;
 }
 
 export const ShowroomModal: React.FC<ShowroomModalProps> = ({
@@ -33,6 +40,12 @@ export const ShowroomModal: React.FC<ShowroomModalProps> = ({
   hasNext,
   currentIndex,
   totalCount,
+  isLiked,
+  isSaved,
+  likeCount,
+  onToggleLike,
+  onToggleSave,
+  onSelectTag,
 }) => {
   const [viewport, setViewport] = useState<ViewportMode>('desktop');
   const [copied, setCopied] = useState(false);
@@ -64,9 +77,9 @@ export const ShowroomModal: React.FC<ShowroomModalProps> = ({
   const getViewportWidth = () => {
     switch (viewport) {
       case 'mobile':
-        return 'w-[375px] h-[812px] rounded-3xl border-4 border-zinc-800 shadow-2xl';
+        return 'w-[375px] h-[812px] rounded-3xl border-4 border-zinc-700 shadow-2xl';
       case 'tablet':
-        return 'w-[768px] h-[1024px] rounded-2xl border-4 border-zinc-800 shadow-2xl';
+        return 'w-[768px] h-[1024px] rounded-2xl border-4 border-zinc-700 shadow-2xl';
       case 'desktop':
       default:
         return 'w-full h-full rounded-none border-0';
@@ -74,131 +87,161 @@ export const ShowroomModal: React.FC<ShowroomModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex flex-col bg-[#050608]/95 backdrop-blur-2xl text-white animate-fade-in">
-      {/* Top Navigation & Controls Bar */}
-      <div className="h-16 px-4 sm:px-6 border-b border-white/[0.08] bg-[#08090D] flex items-center justify-between shrink-0">
-        {/* Left: Title & Metadata */}
-        <div className="flex items-center space-x-4 min-w-0">
-          <div className="hidden sm:flex items-center space-x-1.5 font-mono text-xs text-zinc-400">
-            <span>{currentIndex + 1}</span>
-            <span>/</span>
-            <span>{totalCount}</span>
+    <div className="fixed inset-0 z-50 flex flex-col bg-[#0D0C22]/95 backdrop-blur-2xl text-white animate-fade-in overflow-hidden">
+      {/* Top Dribbble-Style Shot Header */}
+      <div className="h-20 px-4 sm:px-8 border-b border-white/[0.08] bg-[#151426] flex items-center justify-between shrink-0 gap-4">
+        {/* Left: Author Profile & Shot Title */}
+        <div className="flex items-center space-x-3.5 min-w-0">
+          <div
+            className={`w-10 h-10 rounded-full bg-gradient-to-tr ${page.avatarGradient} flex items-center justify-center text-sm font-bold text-white shadow-md shrink-0`}
+          >
+            {page.author.charAt(0)}
           </div>
 
           <div className="min-w-0">
             <div className="flex items-center space-x-2">
-              <span className="text-xs font-mono font-medium px-2 py-0.5 rounded border border-cyan-500/30 bg-cyan-500/10 text-cyan-300">
-                {page.category}
-              </span>
-              <h2 className="text-sm font-semibold text-white truncate max-w-[200px] sm:max-w-md">
+              <h2 className="text-base font-bold text-white truncate max-w-[220px] sm:max-w-md">
                 {page.title}
               </h2>
+              {page.isPro && (
+                <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-white/10 text-zinc-300 border border-white/10 shrink-0">
+                  PRO
+                </span>
+              )}
             </div>
-            <div className="hidden sm:flex items-center space-x-1 text-[11px] text-zinc-400 font-mono">
-              <Folder className="w-3 h-3" />
-              <span>{page.folder}</span>
+
+            <div className="flex items-center space-x-2 text-xs text-zinc-400">
+              <span className="font-medium text-white hover:text-[#EA4C89] transition">
+                {page.author}
+              </span>
+              <span>•</span>
+              <span className="text-[#EA4C89] font-medium">{page.category}</span>
+              <span>•</span>
+              <span className="text-emerald-400 font-medium">Available for work</span>
             </div>
           </div>
         </div>
 
         {/* Center: Device Viewport Switcher */}
-        <div className="flex items-center p-1 rounded-xl bg-black/40 border border-white/[0.08]">
+        <div className="hidden md:flex items-center p-1 rounded-full bg-[#0D0C22] border border-white/[0.08]">
           <button
             onClick={() => setViewport('desktop')}
             title="Desktop View (1440px)"
-            className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition ${
+            className={`flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold transition ${
               viewport === 'desktop'
-                ? 'bg-cyan-400/20 text-cyan-300 border border-cyan-400/40'
+                ? 'bg-white text-black shadow-md'
                 : 'text-zinc-400 hover:text-white'
             }`}
           >
             <Monitor className="w-3.5 h-3.5" />
-            <span className="hidden md:inline">Desktop</span>
+            <span>Desktop</span>
           </button>
 
           <button
             onClick={() => setViewport('tablet')}
             title="Tablet View (768px)"
-            className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition ${
+            className={`flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold transition ${
               viewport === 'tablet'
-                ? 'bg-cyan-400/20 text-cyan-300 border border-cyan-400/40'
+                ? 'bg-white text-black shadow-md'
                 : 'text-zinc-400 hover:text-white'
             }`}
           >
             <Tablet className="w-3.5 h-3.5" />
-            <span className="hidden md:inline">Tablet</span>
+            <span>Tablet</span>
           </button>
 
           <button
             onClick={() => setViewport('mobile')}
             title="Mobile View (375px)"
-            className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition ${
+            className={`flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold transition ${
               viewport === 'mobile'
-                ? 'bg-cyan-400/20 text-cyan-300 border border-cyan-400/40'
+                ? 'bg-white text-black shadow-md'
                 : 'text-zinc-400 hover:text-white'
             }`}
           >
             <Smartphone className="w-3.5 h-3.5" />
-            <span className="hidden md:inline">Mobile</span>
+            <span>Mobile</span>
           </button>
         </div>
 
-        {/* Right: Actions */}
-        <div className="flex items-center space-x-2">
+        {/* Right: Dribbble Action Buttons */}
+        <div className="flex items-center space-x-2.5">
           {/* Previous / Next buttons */}
-          <div className="hidden sm:flex items-center space-x-1 border-r border-white/10 pr-2 mr-2">
+          <div className="hidden lg:flex items-center space-x-1 border-r border-white/10 pr-2 mr-1">
             <button
               onClick={onPrev}
               disabled={!hasPrev}
-              className="p-1.5 rounded-lg text-zinc-400 hover:text-white hover:bg-white/5 disabled:opacity-30 disabled:hover:bg-transparent"
-              title="Previous page (Left Arrow)"
+              className="p-2 rounded-full text-zinc-400 hover:text-white hover:bg-white/5 disabled:opacity-30 disabled:hover:bg-transparent"
+              title="Previous shot (Left Arrow)"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
+            <span className="text-xs font-mono text-zinc-500 px-1">
+              {currentIndex + 1}/{totalCount}
+            </span>
             <button
               onClick={onNext}
               disabled={!hasNext}
-              className="p-1.5 rounded-lg text-zinc-400 hover:text-white hover:bg-white/5 disabled:opacity-30 disabled:hover:bg-transparent"
-              title="Next page (Right Arrow)"
+              className="p-2 rounded-full text-zinc-400 hover:text-white hover:bg-white/5 disabled:opacity-30 disabled:hover:bg-transparent"
+              title="Next shot (Right Arrow)"
             >
               <ChevronRight className="w-4 h-4" />
             </button>
           </div>
 
-          {/* Copy link */}
+          {/* Bookmark / Save */}
           <button
-            onClick={handleCopy}
-            title="Copy URL"
-            className="p-2 rounded-lg border border-white/[0.08] bg-white/[0.02] hover:bg-white/[0.08] text-zinc-300 hover:text-white transition"
+            onClick={(e) => onToggleSave(e, page.id)}
+            className={`p-2.5 rounded-full border transition ${
+              isSaved
+                ? 'bg-[#EA4C89] border-[#EA4C89] text-white shadow-md shadow-[#EA4C89]/30'
+                : 'bg-[#0D0C22] border-white/10 text-zinc-300 hover:text-white hover:border-white/20'
+            }`}
+            title={isSaved ? 'Saved' : 'Save Shot'}
           >
-            {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
+            <Bookmark className={`w-4 h-4 ${isSaved ? 'fill-current' : ''}`} />
           </button>
 
-          {/* Open full in new tab */}
+          {/* Like Shot with Count */}
+          <button
+            onClick={(e) => onToggleLike(e, page.id)}
+            className={`flex items-center space-x-1.5 px-4 py-2.5 rounded-full border transition ${
+              isLiked
+                ? 'bg-[#EA4C89] border-[#EA4C89] text-white shadow-md shadow-[#EA4C89]/30'
+                : 'bg-[#0D0C22] border-white/10 text-zinc-300 hover:text-white hover:border-white/20'
+            }`}
+            title="Like this shot"
+          >
+            <Heart className={`w-4 h-4 ${isLiked ? 'fill-current text-white' : 'text-[#EA4C89]'}`} />
+            <span className="text-xs font-semibold font-mono">{likeCount}</span>
+          </button>
+
+          {/* Visit Site Button */}
           <a
             href={page.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-cyan-400 text-black text-xs font-semibold hover:bg-cyan-300 transition shadow-lg shadow-cyan-500/20"
+            className="flex items-center space-x-1.5 px-4 py-2.5 rounded-full bg-[#EA4C89] hover:bg-[#F06292] text-white text-xs font-bold transition shadow-lg shadow-[#EA4C89]/30"
           >
-            <span>Open Tab</span>
+            <span>Visit Site</span>
             <ExternalLink className="w-3.5 h-3.5" />
           </a>
 
-          {/* Close button */}
+          {/* Close Modal */}
           <button
             onClick={onClose}
-            className="p-2 rounded-lg border border-white/[0.08] bg-white/[0.02] hover:bg-red-500/20 hover:border-red-500/40 text-zinc-400 hover:text-red-300 transition"
-            title="Close Showroom (Esc)"
+            className="p-2.5 rounded-full bg-[#0D0C22] border border-white/10 hover:bg-white/10 text-zinc-400 hover:text-white transition ml-1"
+            title="Close Shot (Esc)"
           >
             <X className="w-4 h-4" />
           </button>
         </div>
       </div>
 
-      {/* Main Interactive Viewer Stage */}
-      <div className="flex-1 overflow-auto bg-[#030406] flex items-center justify-center p-2 sm:p-6 relative">
-        <div className={`transition-all duration-300 bg-black overflow-hidden flex flex-col ${getViewportWidth()}`}>
+      {/* Main Interactive Stage */}
+      <div className="flex-1 overflow-auto bg-[#0A0915] flex flex-col items-center justify-start p-4 sm:p-8">
+        {/* Canvas Frame */}
+        <div className={`transition-all duration-300 bg-black overflow-hidden flex flex-col my-auto ${getViewportWidth()}`}>
           <iframe
             key={page.id}
             src={page.url}
@@ -207,8 +250,44 @@ export const ShowroomModal: React.FC<ShowroomModalProps> = ({
             sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
           />
         </div>
+
+        {/* Shot Info & Tags bar beneath canvas */}
+        <div className="w-full max-w-4xl mt-6 p-6 rounded-2xl bg-[#151426] border border-white/[0.08] shadow-xl shrink-0">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+            <div>
+              <h3 className="text-lg font-bold text-white mb-1">{page.title}</h3>
+              <p className="text-sm text-zinc-400">{page.description}</p>
+            </div>
+
+            <button
+              onClick={handleCopy}
+              className="flex items-center space-x-1.5 px-3 py-2 rounded-full bg-[#0D0C22] border border-white/10 text-xs font-medium text-zinc-300 hover:text-white hover:border-white/20 transition self-start sm:self-auto"
+            >
+              {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+              <span>{copied ? 'Link Copied!' : 'Copy Link'}</span>
+            </button>
+          </div>
+
+          {/* Tags */}
+          {page.tags && page.tags.length > 0 && (
+            <div className="flex flex-wrap items-center gap-2 pt-4 border-t border-white/[0.06]">
+              <span className="text-xs text-zinc-500 font-medium">Tags:</span>
+              {page.tags.map((tag) => (
+                <button
+                  key={tag}
+                  onClick={() => {
+                    onSelectTag(tag);
+                    onClose();
+                  }}
+                  className="px-3 py-1 rounded-full bg-white/[0.04] hover:bg-[#EA4C89]/20 hover:text-[#EA4C89] border border-white/[0.08] text-xs text-zinc-300 transition"
+                >
+                  #{tag}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
 };
-

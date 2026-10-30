@@ -1,49 +1,56 @@
 import React, { useState } from 'react';
-import { ExternalLink, Maximize2, Folder, Calendar } from 'lucide-react';
+import { Heart, Eye, Bookmark, Maximize2, ExternalLink } from 'lucide-react';
 import { LandingPage } from '../types';
-import { formatDate } from '../lib/utils';
 
 interface ShowroomCardProps {
   page: LandingPage;
+  isLiked: boolean;
+  isSaved: boolean;
+  likeCount: number;
+  onToggleLike: (e: React.MouseEvent, pageId: string) => void;
+  onToggleSave: (e: React.MouseEvent, pageId: string) => void;
   onPreview: (page: LandingPage) => void;
 }
 
-export const ShowroomCard: React.FC<ShowroomCardProps> = ({ page, onPreview }) => {
+export const ShowroomCard: React.FC<ShowroomCardProps> = ({
+  page,
+  isLiked,
+  isSaved,
+  likeCount,
+  onToggleLike,
+  onToggleSave,
+  onPreview,
+}) => {
   const [isIframeLoaded, setIsIframeLoaded] = useState(false);
+  const [likeBurst, setLikeBurst] = useState(false);
 
-  // Category subtle pill coloring
-  const getCategoryTheme = (category: string) => {
-    const cat = category.toLowerCase();
-    if (cat.includes('saas') || cat.includes('ai')) {
-      return 'border-cyan-500/30 text-cyan-300 bg-cyan-500/10';
-    }
-    if (cat.includes('ecommerce') || cat.includes('shop')) {
-      return 'border-amber-500/30 text-amber-300 bg-amber-500/10';
-    }
-    if (cat.includes('portfolio')) {
-      return 'border-purple-500/30 text-purple-300 bg-purple-500/10';
-    }
-    if (cat.includes('business') || cat.includes('finance')) {
-      return 'border-blue-500/30 text-blue-300 bg-blue-500/10';
-    }
-    return 'border-zinc-500/30 text-zinc-300 bg-zinc-500/10';
+  const handleLike = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setLikeBurst(true);
+    setTimeout(() => setLikeBurst(false), 450);
+    onToggleLike(e, page.id);
+  };
+
+  const handleSave = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    onToggleSave(e, page.id);
   };
 
   return (
     <div
       onClick={() => onPreview(page)}
-      className="group relative flex flex-col rounded-2xl bg-[#0B0D13] border border-white/[0.07] hover:border-cyan-400/40 hover:shadow-[0_20px_45px_-10px_rgba(0,0,0,0.8),0_0_25px_-5px_rgba(0,245,255,0.2)] transition-all duration-300 cursor-pointer overflow-hidden"
+      className="group flex flex-col cursor-pointer select-none"
     >
-      {/* Visual Preview Container (16:10 aspect ratio) */}
-      <div className="relative aspect-[16/10] w-full bg-[#050608] overflow-hidden border-b border-white/[0.05]">
-        {/* Shimmer loading skeleton */}
+      {/* Dribbble Shot Container */}
+      <div className="relative aspect-[4/3] w-full rounded-2xl bg-[#18172E] border border-white/[0.08] group-hover:border-[#EA4C89]/50 overflow-hidden shadow-dribbble-shot group-hover:shadow-dribbble-hover transition-all duration-300">
+        {/* Loading shimmer */}
         {!isIframeLoaded && (
-          <div className="absolute inset-0 flex items-center justify-center bg-zinc-900/40">
-            <div className="w-6 h-6 rounded-full border-2 border-cyan-400/20 border-t-cyan-400 animate-spin"></div>
+          <div className="absolute inset-0 flex items-center justify-center bg-[#151426]">
+            <div className="w-7 h-7 rounded-full border-2 border-[#EA4C89]/30 border-t-[#EA4C89] animate-spin"></div>
           </div>
         )}
 
-        {/* Scaled Live Iframe Preview */}
+        {/* Live Miniature Iframe */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <iframe
             src={page.url}
@@ -52,89 +59,121 @@ export const ShowroomCard: React.FC<ShowroomCardProps> = ({ page, onPreview }) =
             sandbox="allow-scripts allow-same-origin"
             tabIndex={-1}
             aria-hidden="true"
-            className="w-[1440px] h-[900px] border-0 origin-top-left scale-[0.27] sm:scale-[0.27] md:scale-[0.25] lg:scale-[0.27] xl:scale-[0.28] select-none"
+            className="w-[1440px] h-[1080px] border-0 origin-top-left scale-[0.24] sm:scale-[0.25] md:scale-[0.23] lg:scale-[0.26] select-none"
             loading="lazy"
           />
         </div>
 
-        {/* Hover Sheen & Action Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0B0D13] via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
-          <div className="flex items-center space-x-3 transform translate-y-3 group-hover:translate-y-0 transition-transform duration-300">
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                onPreview(page);
-              }}
-              className="flex items-center space-x-2 px-4 py-2 rounded-xl bg-cyan-400 text-black text-xs font-semibold shadow-lg shadow-cyan-500/30 hover:bg-cyan-300 transition"
-            >
+        {/* Dribbble Hover Overlay with Gradient & Quick Actions */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex flex-col justify-between p-4">
+          {/* Top Row: Save & Like Icon Buttons */}
+          <div className="flex items-center justify-between">
+            <span className="text-[11px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full bg-black/60 text-white backdrop-blur-md border border-white/10">
+              {page.category}
+            </span>
+
+            <div className="flex items-center space-x-2">
+              {/* Save / Bookmark Button */}
+              <button
+                onClick={handleSave}
+                title={isSaved ? 'Remove from Saved' : 'Save to Collection'}
+                className={`w-9 h-9 rounded-full flex items-center justify-center transition backdrop-blur-md ${
+                  isSaved
+                    ? 'bg-[#EA4C89] text-white shadow-lg shadow-[#EA4C89]/40'
+                    : 'bg-white/20 text-white hover:bg-white hover:text-black'
+                }`}
+              >
+                <Bookmark className={`w-4 h-4 ${isSaved ? 'fill-current' : ''}`} />
+              </button>
+
+              {/* Heart / Like Button */}
+              <button
+                onClick={handleLike}
+                title={isLiked ? 'Unlike Shot' : 'Like Shot'}
+                className={`w-9 h-9 rounded-full flex items-center justify-center transition backdrop-blur-md ${
+                  isLiked
+                    ? 'bg-[#EA4C89] text-white shadow-lg shadow-[#EA4C89]/40'
+                    : 'bg-white/20 text-white hover:bg-white hover:text-[#EA4C89]'
+                } ${likeBurst ? 'scale-125' : ''}`}
+              >
+                <Heart className={`w-4 h-4 ${isLiked ? 'fill-current' : ''}`} />
+              </button>
+            </div>
+          </div>
+
+          {/* Center: Quick Preview CTA */}
+          <div className="flex justify-center items-center">
+            <div className="px-4 py-2 rounded-full bg-white text-black text-xs font-bold tracking-tight shadow-xl flex items-center space-x-1.5 transform translate-y-2 group-hover:translate-y-0 transition-transform">
               <Maximize2 className="w-3.5 h-3.5" />
-              <span>Showroom Preview</span>
-            </button>
+              <span>Preview Shot</span>
+            </div>
+          </div>
+
+          {/* Bottom of Overlay: Shot Title */}
+          <div className="flex items-center justify-between">
+            <h4 className="text-sm font-semibold text-white truncate max-w-[80%] drop-shadow-md">
+              {page.title}
+            </h4>
 
             <a
               href={page.url}
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
-              className="p-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white backdrop-blur-md border border-white/15 transition"
+              className="p-1.5 rounded-full bg-white/20 hover:bg-white text-white hover:text-black transition backdrop-blur-md"
               title="Open full page in new tab"
             >
-              <ExternalLink className="w-4 h-4" />
+              <ExternalLink className="w-3.5 h-3.5" />
             </a>
           </div>
         </div>
-
-        {/* Top-right direct launch icon */}
-        <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
-          <span className="p-1.5 rounded-lg bg-black/60 backdrop-blur-md text-zinc-400 hover:text-white border border-white/10 inline-block">
-            <ExternalLink className="w-3.5 h-3.5" />
-          </span>
-        </div>
       </div>
 
-      {/* Card Info Content */}
-      <div className="p-5 flex-1 flex flex-col justify-between">
-        <div>
-          {/* Category & Folder path */}
-          <div className="flex items-center justify-between mb-3">
-            <span
-              className={`text-[11px] font-mono font-medium px-2.5 py-0.5 rounded-md border ${getCategoryTheme(
-                page.category
-              )}`}
-            >
-              {page.category}
-            </span>
-            <div className="flex items-center space-x-1 text-[11px] text-zinc-400 font-mono">
-              <Folder className="w-3 h-3" />
-              <span className="truncate max-w-[140px]">{page.folder}</span>
-            </div>
+      {/* Dribbble Shot Footer: Creator Info & Engagement Metrics */}
+      <div className="mt-3 px-1 flex items-center justify-between">
+        {/* Creator / Author with Avatar */}
+        <div className="flex items-center space-x-2 min-w-0">
+          <div
+            className={`w-6 h-6 rounded-full bg-gradient-to-tr ${page.avatarGradient} flex items-center justify-center text-[10px] font-bold text-white shadow-sm shrink-0`}
+          >
+            {page.author.charAt(0)}
           </div>
 
-          {/* Title */}
-          <h3 className="font-semibold text-base text-white group-hover:text-cyan-300 transition tracking-tight line-clamp-1 mb-1.5">
-            {page.title}
-          </h3>
+          <span className="text-xs font-semibold text-white group-hover:text-[#EA4C89] transition truncate">
+            {page.author}
+          </span>
 
-          {/* Description */}
-          <p className="text-xs text-zinc-400 line-clamp-2 leading-relaxed">
-            {page.description}
-          </p>
+          {page.isPro && (
+            <span className="text-[9px] uppercase font-bold tracking-wider px-1 py-0.2 rounded bg-white/10 text-zinc-300 border border-white/10 shrink-0">
+              PRO
+            </span>
+          )}
         </div>
 
-        {/* Card Footer: Tags & Date */}
-        <div className="mt-4 pt-3.5 border-t border-white/[0.05] flex items-center justify-between text-[11px] text-zinc-400 font-mono">
-          <div className="flex items-center space-x-1.5">
-            <Calendar className="w-3 h-3 text-zinc-400" />
-            <span>{formatDate(page.updatedAt)}</span>
-          </div>
+        {/* Engagement Stats: Likes & Views */}
+        <div className="flex items-center space-x-3 text-xs text-zinc-400 font-medium shrink-0">
+          {/* Like button with counter */}
+          <button
+            onClick={handleLike}
+            className={`flex items-center space-x-1 transition ${
+              isLiked ? 'text-[#EA4C89]' : 'hover:text-[#EA4C89]'
+            }`}
+          >
+            <Heart
+              className={`w-3.5 h-3.5 transition-transform ${
+                isLiked ? 'fill-[#EA4C89] text-[#EA4C89]' : 'text-zinc-400'
+              } ${likeBurst ? 'scale-125' : ''}`}
+            />
+            <span className="text-[11px] font-mono">{likeCount}</span>
+          </button>
 
-          <div className="flex items-center space-x-1 text-cyan-400/80 group-hover:text-cyan-400 text-xs font-sans font-medium">
-            <span>Explore</span>
-            <span className="transition-transform group-hover:translate-x-1">→</span>
+          {/* Views count */}
+          <div className="flex items-center space-x-1 text-zinc-400">
+            <Eye className="w-3.5 h-3.5" />
+            <span className="text-[11px] font-mono">{page.viewsCount}</span>
           </div>
         </div>
       </div>
     </div>
   );
 };
-
