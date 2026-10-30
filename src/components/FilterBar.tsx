@@ -30,11 +30,11 @@ export const FilterBar: React.FC<FilterBarProps> = ({
             <select
               value={sortBy}
               onChange={(e) => onSortChange(e.target.value as SortOption)}
-              aria-label="Sort shots"
+              aria-label="Sort templates"
               className="appearance-none pl-4 pr-10 py-2.5 rounded-full bg-[#18172E] border border-white/[0.1] text-xs font-semibold text-white cursor-pointer hover:border-white/20 focus:outline-none focus:border-[#EA4C89] transition shadow-sm"
             >
               <option value="popular" className="bg-[#18172E] text-white">Popular</option>
-              <option value="newest" className="bg-[#18172E] text-white">New & Noteworthy</option>
+              <option value="newest" className="bg-[#18172E] text-white">Newest First</option>
               <option value="alphabetical" className="bg-[#18172E] text-white">Alphabetical (A-Z)</option>
               <option value="oldest" className="bg-[#18172E] text-white">Oldest</option>
             </select>
@@ -93,7 +93,7 @@ export const FilterBar: React.FC<FilterBarProps> = ({
         <div className="hidden sm:flex items-center space-x-2 shrink-0 self-end lg:self-auto">
           <div className="flex items-center space-x-1.5 px-3.5 py-2 rounded-full bg-[#18172E] border border-white/[0.08] text-xs font-medium text-zinc-300">
             <SlidersHorizontal className="w-3.5 h-3.5 text-[#EA4C89]" />
-            <span>Interactive Shots</span>
+            <span>Interactive Previews</span>
           </div>
         </div>
       </div>

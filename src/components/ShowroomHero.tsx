@@ -24,17 +24,17 @@ export const ShowroomHero: React.FC<ShowroomHeroProps> = ({
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[850px] h-[350px] bg-[radial-gradient(ellipse_at_top,rgba(234,76,137,0.14)_0%,rgba(99,102,241,0.08)_40%,transparent_70%)] pointer-events-none -z-10" />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Playful Pill Tag */}
+        {/* Personal Showcase Pill */}
         <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full border border-[#EA4C89]/30 bg-[#EA4C89]/10 text-[#EA4C89] text-xs font-medium mb-6 backdrop-blur-md">
           <Sparkles className="w-3.5 h-3.5" />
-          <span>Curated Landing Page Showcase</span>
+          <span>My Personal Landing Page Showcase</span>
           <span className="text-zinc-500">•</span>
-          <span className="text-zinc-300 font-mono">{totalCount} Live Templates</span>
+          <span className="text-zinc-300 font-mono">{totalCount} Coded Pages</span>
         </div>
 
         {/* Big Editorial Heading */}
         <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white mb-6 leading-[1.08]">
-          Discover the world’s top{' '}
+          Explore my collection of{' '}
           <span className="bg-gradient-to-r from-[#EA4C89] via-[#FF8A80] to-[#F48FB1] bg-clip-text text-transparent">
             landing pages.
           </span>
@@ -42,10 +42,10 @@ export const ShowroomHero: React.FC<ShowroomHeroProps> = ({
 
         {/* Subtitle */}
         <p className="text-base sm:text-lg text-[#9E9EA7] max-w-2xl mx-auto leading-relaxed mb-8 font-normal">
-          Explore inspiring, live-coded HTML templates with zero database overhead. Coded for production, tested for responsiveness, and ready to deploy.
+          Every template here is designed, coded, and curated by me. Browse authentic live previews, test device responsiveness, and take inspiration for your next build.
         </p>
 
-        {/* Large Dribbble-Style Search Pill (Visible especially on mobile or hero focus) */}
+        {/* Search Pill */}
         <div className="max-w-2xl mx-auto mb-6">
           <div className="relative group">
             <Search className="w-5 h-5 text-zinc-400 absolute left-5 top-1/2 -translate-y-1/2 group-focus-within:text-[#EA4C89] transition-colors" />
@@ -53,7 +53,7 @@ export const ShowroomHero: React.FC<ShowroomHeroProps> = ({
               type="text"
               value={searchTerm}
               onChange={(e) => onSearchChange(e.target.value)}
-              placeholder="Search landing pages, tags, or categories (e.g., 'SaaS', 'Dark Mode')..."
+              placeholder="Search my templates, categories, or keywords (e.g., 'SaaS', 'Dark Mode')..."
               className="w-full pl-14 pr-32 py-4 rounded-full bg-[#18172E] border border-white/[0.1] text-base text-white placeholder-zinc-400 focus:outline-none focus:border-[#EA4C89] focus:ring-4 focus:ring-[#EA4C89]/15 shadow-2xl transition"
             />
             <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center space-x-2">
@@ -68,7 +68,7 @@ export const ShowroomHero: React.FC<ShowroomHeroProps> = ({
         <div className="flex items-center justify-center flex-wrap gap-2 text-xs text-zinc-400">
           <span className="flex items-center space-x-1 text-zinc-500 mr-1">
             <TrendingUp className="w-3.5 h-3.5 text-[#EA4C89]" />
-            <span>Trending:</span>
+            <span>Categories:</span>
           </span>
           {trendingTags.map((tag) => (
             <button

@@ -104,8 +104,8 @@ export const ShowroomModal: React.FC<ShowroomModalProps> = ({
                 {page.title}
               </h2>
               {page.isPro && (
-                <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-white/10 text-zinc-300 border border-white/10 shrink-0">
-                  PRO
+                <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-[#EA4C89]/20 text-[#EA4C89] border border-[#EA4C89]/30 shrink-0">
+                  ORIGINAL
                 </span>
               )}
             </div>
@@ -117,7 +117,7 @@ export const ShowroomModal: React.FC<ShowroomModalProps> = ({
               <span>•</span>
               <span className="text-[#EA4C89] font-medium">{page.category}</span>
               <span>•</span>
-              <span className="text-emerald-400 font-medium">Available for work</span>
+              <span className="text-emerald-400 font-medium">Open for Inspiration</span>
             </div>
           </div>
         </div>
@@ -172,7 +172,7 @@ export const ShowroomModal: React.FC<ShowroomModalProps> = ({
               onClick={onPrev}
               disabled={!hasPrev}
               className="p-2 rounded-full text-zinc-400 hover:text-white hover:bg-white/5 disabled:opacity-30 disabled:hover:bg-transparent"
-              title="Previous shot (Left Arrow)"
+              title="Previous template (Left Arrow)"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
@@ -183,7 +183,7 @@ export const ShowroomModal: React.FC<ShowroomModalProps> = ({
               onClick={onNext}
               disabled={!hasNext}
               className="p-2 rounded-full text-zinc-400 hover:text-white hover:bg-white/5 disabled:opacity-30 disabled:hover:bg-transparent"
-              title="Next shot (Right Arrow)"
+              title="Next template (Right Arrow)"
             >
               <ChevronRight className="w-4 h-4" />
             </button>
@@ -197,12 +197,12 @@ export const ShowroomModal: React.FC<ShowroomModalProps> = ({
                 ? 'bg-[#EA4C89] border-[#EA4C89] text-white shadow-md shadow-[#EA4C89]/30'
                 : 'bg-[#0D0C22] border-white/10 text-zinc-300 hover:text-white hover:border-white/20'
             }`}
-            title={isSaved ? 'Saved' : 'Save Shot'}
+            title={isSaved ? 'Saved to Favorites' : 'Save Template'}
           >
             <Bookmark className={`w-4 h-4 ${isSaved ? 'fill-current' : ''}`} />
           </button>
 
-          {/* Like Shot with Count */}
+          {/* Like Template with Count */}
           <button
             onClick={(e) => onToggleLike(e, page.id)}
             className={`flex items-center space-x-1.5 px-4 py-2.5 rounded-full border transition ${
@@ -210,20 +210,20 @@ export const ShowroomModal: React.FC<ShowroomModalProps> = ({
                 ? 'bg-[#EA4C89] border-[#EA4C89] text-white shadow-md shadow-[#EA4C89]/30'
                 : 'bg-[#0D0C22] border-white/10 text-zinc-300 hover:text-white hover:border-white/20'
             }`}
-            title="Like this shot"
+            title="Like this template"
           >
             <Heart className={`w-4 h-4 ${isLiked ? 'fill-current text-white' : 'text-[#EA4C89]'}`} />
             <span className="text-xs font-semibold font-mono">{likeCount}</span>
           </button>
 
-          {/* Visit Site Button */}
+          {/* Visit Live Page Button */}
           <a
             href={page.url}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center space-x-1.5 px-4 py-2.5 rounded-full bg-[#EA4C89] hover:bg-[#F06292] text-white text-xs font-bold transition shadow-lg shadow-[#EA4C89]/30"
           >
-            <span>Visit Site</span>
+            <span>Visit Live Page</span>
             <ExternalLink className="w-3.5 h-3.5" />
           </a>
 
@@ -231,7 +231,7 @@ export const ShowroomModal: React.FC<ShowroomModalProps> = ({
           <button
             onClick={onClose}
             className="p-2.5 rounded-full bg-[#0D0C22] border border-white/10 hover:bg-white/10 text-zinc-400 hover:text-white transition ml-1"
-            title="Close Shot (Esc)"
+            title="Close Preview (Esc)"
           >
             <X className="w-4 h-4" />
           </button>

@@ -1,5 +1,5 @@
 {
-  "scannedAt": "2026-10-30T06:21:30.964Z",
+  "scannedAt": "2026-10-30T06:33:27.017Z",
   "totalCount": 4,
   "categories": [
     "Business",
@@ -25,10 +25,10 @@
         "Finance"
       ],
       "updatedAt": "2026-10-29T22:32:01.577Z",
-      "author": "Stratos Group",
+      "author": "Personal Project",
       "avatarGradient": "from-pink-500 to-rose-500",
-      "initialLikes": 198,
-      "viewsCount": "4.6k",
+      "initialLikes": 62,
+      "viewsCount": "4.8k",
       "isPro": true
     },
     {
@@ -48,10 +48,10 @@
         "Machine Learning"
       ],
       "updatedAt": "2026-10-29T22:31:53.767Z",
-      "author": "LinearCraft",
+      "author": "Personal Project",
       "avatarGradient": "from-pink-500 to-rose-500",
-      "initialLikes": 158,
-      "viewsCount": "4.2k",
+      "initialLikes": 122,
+      "viewsCount": "4.4k",
       "isPro": true
     },
     {
@@ -71,11 +71,11 @@
         "Minimalist"
       ],
       "updatedAt": "2026-10-29T22:31:53.572Z",
-      "author": "Julian Thorne",
+      "author": "Personal Project",
       "avatarGradient": "from-amber-400 to-orange-500",
-      "initialLikes": 201,
-      "viewsCount": "2.1k",
-      "isPro": false
+      "initialLikes": 185,
+      "viewsCount": "2.3k",
+      "isPro": true
     },
     {
       "id": "ecommerce-chronos-luxury",
@@ -94,11 +94,11 @@
         "Titanium"
       ],
       "updatedAt": "2026-10-29T22:31:53.438Z",
-      "author": "Luxe Collective",
+      "author": "Personal Project",
       "avatarGradient": "from-emerald-400 to-teal-500",
-      "initialLikes": 67,
-      "viewsCount": "2.9k",
-      "isPro": false
+      "initialLikes": 171,
+      "viewsCount": "3.1k",
+      "isPro": true
     }
   ]
 }

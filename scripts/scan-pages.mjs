@@ -71,7 +71,7 @@ function stringToHash(str) {
   return Math.abs(hash);
 }
 
-function getAuthorInfo(id, category, fallbackName) {
+function getAuthorInfo(id) {
   const hash = stringToHash(id);
   const avatars = [
     'from-pink-500 to-rose-500',
@@ -81,25 +81,15 @@ function getAuthorInfo(id, category, fallbackName) {
     'from-emerald-400 to-teal-500',
   ];
   const avatarGradient = avatars[hash % avatars.length];
-  const initialLikes = (hash % 180) + 48;
-  const initialViews = ((hash % 38) + 12) / 10; // e.g. 1.2k - 4.9k
-
-  const names = {
-    SaaS: ['Apex Studio', 'Nexus Labs', 'LinearCraft', 'HyperCloud'],
-    Ecommerce: ['Maison Horology', 'Atelier Mode', 'Verve Retail', 'Luxe Collective'],
-    Portfolio: ['Elena Rostova', 'Julian Thorne', 'Studio Koto', 'Arlo Vance'],
-    Business: ['Vanguard Capital', 'Aether Advisory', 'Stratos Group', 'Monolith Ventures'],
-  };
-
-  const pool = names[category] || ['Creative Studio', 'Design Lab', 'Pixel Co'];
-  const authorName = pool[hash % pool.length];
+  const initialLikes = (hash % 160) + 52;
+  const initialViews = ((hash % 38) + 14) / 10; // e.g. 1.4k - 5.1k
 
   return {
-    author: authorName,
+    author: 'Personal Project',
     avatarGradient,
     initialLikes,
     viewsCount: `${initialViews.toFixed(1)}k`,
-    isPro: hash % 2 === 0,
+    isPro: true,
   };
 }
 
@@ -135,12 +125,12 @@ function scanDirectory(baseDir) {
 
           const relativeUrl = `/landing-pages/${encodeURIComponent(categoryRaw)}/${encodeURIComponent(sub.name)}`;
           const id = `${categoryRaw}-${fallbackName}`.toLowerCase().replace(/[^a-z0-9_-]/g, '-');
-          const authorInfo = getAuthorInfo(id, category, fallbackName);
+          const authorInfo = getAuthorInfo(id);
 
           pages.push({
             id,
             title: meta.title,
-            description: meta.description || `Modern ${category} landing page template.`,
+            description: meta.description || `Handcrafted ${category} landing page template.`,
             category,
             categorySlug: categoryRaw.toLowerCase(),
             url: relativeUrl,
@@ -170,12 +160,12 @@ function scanDirectory(baseDir) {
 
             const relativeUrl = `/landing-pages/${encodeURIComponent(categoryRaw)}/${encodeURIComponent(sub.name)}/${encodeURIComponent(targetHtmlName)}`;
             const id = `${categoryRaw}-${sub.name}`.toLowerCase().replace(/[^a-z0-9_-]/g, '-');
-            const authorInfo = getAuthorInfo(id, category, fallbackName);
+            const authorInfo = getAuthorInfo(id);
 
             pages.push({
               id,
               title: meta.title,
-              description: meta.description || `Modern ${category} landing page template.`,
+              description: meta.description || `Handcrafted ${category} landing page template.`,
               category,
               categorySlug: categoryRaw.toLowerCase(),
               url: relativeUrl,
@@ -198,12 +188,12 @@ function scanDirectory(baseDir) {
 
       const relativeUrl = `/landing-pages/${encodeURIComponent(entry.name)}`;
       const id = `general-${fallbackName}`.toLowerCase().replace(/[^a-z0-9_-]/g, '-');
-      const authorInfo = getAuthorInfo(id, category, fallbackName);
+      const authorInfo = getAuthorInfo(id);
 
       pages.push({
         id,
         title: meta.title,
-        description: meta.description || 'Modern standalone landing page.',
+        description: meta.description || 'Handcrafted standalone landing page template.',
         category,
         categorySlug: 'general',
         url: relativeUrl,

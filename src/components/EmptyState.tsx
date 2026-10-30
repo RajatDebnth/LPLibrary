@@ -16,26 +16,27 @@ export const EmptyState: React.FC<EmptyStateProps> = ({
 }) => {
   return (
     <div className="py-28 text-center max-w-md mx-auto">
-      {/* Playful Dribbble Ball Icon / Illustration */}
-      <div className="w-20 h-20 rounded-full border border-white/10 bg-[#18172E] mx-auto flex items-center justify-center mb-6 text-zinc-400 shadow-2xl shadow-[#EA4C89]/10">
+      {/* Modern Viewport Icon */}
+      <div className="w-20 h-20 rounded-2xl border border-white/10 bg-[#18172E] mx-auto flex items-center justify-center mb-6 text-zinc-400 shadow-2xl shadow-[#EA4C89]/10">
         <svg className="w-10 h-10 text-[#EA4C89]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="12" cy="12" r="10" />
-          <path d="M19.13 5.09C15.22 9.14 10 10.44 2.25 10.94" />
-          <path d="M21.75 12.84c-6.62-1.41-12.14 1-16.38 6.32" />
-          <path d="M8.5 2.5c2 4 2.5 9 1 14.5" />
+          <rect x="2" y="3" width="20" height="14" rx="2" />
+          <line x1="8" y1="21" x2="16" y2="21" />
+          <line x1="12" y1="17" x2="12" y2="21" />
+          <circle cx="6" cy="7" r="1" fill="#EA4C89" />
+          <circle cx="9" cy="7" r="1" fill="#EA4C89" />
         </svg>
       </div>
 
       <h3 className="text-2xl font-bold text-white mb-2 font-sans">
-        {isSavedActive ? 'No saved shots yet' : 'No landing pages found'}
+        {isSavedActive ? 'No saved templates yet' : 'No landing pages found'}
       </h3>
 
       <p className="text-sm text-zinc-400 leading-relaxed mb-8">
         {isSavedActive
-          ? 'Hover over any landing page shot and click the bookmark icon to curate your personal inspiration collection.'
+          ? 'Hover over any landing page in my collection and click the bookmark icon to curate your personal inspiration list.'
           : searchTerm
-          ? `We couldn't find any shots matching "${searchTerm}". Try a broader keyword or reset the filter.`
-          : `No landing pages found under "${selectedCategory}".`}
+          ? `We couldn't find any templates in my collection matching "${searchTerm}". Try another keyword or reset the filter.`
+          : `No landing pages found under the "${selectedCategory}" category.`}
       </p>
 
       <button

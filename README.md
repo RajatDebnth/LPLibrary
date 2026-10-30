@@ -1,6 +1,6 @@
-# Landing Page Library — Digital Showroom Edition
+# LandingVault — Personal Landing Page Showcase & Archive
 
-A digital showroom to present, organize, and inspect standalone HTML landing pages. 
+A personal digital showcase to organize, present, and inspect all my standalone HTML landing pages in one live library. Open for everyone to explore and take inspiration. 
 
 Built with **React**, **TypeScript**, **Tailwind CSS**, **Git**, and **Vercel**. Designed with Apple minimalism, Sony luxury dark surfaces, Linear micro-interactions, and Awwwards-level visual polish.
 

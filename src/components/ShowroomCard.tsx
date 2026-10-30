@@ -89,7 +89,7 @@ export const ShowroomCard: React.FC<ShowroomCardProps> = ({
               {/* Heart / Like Button */}
               <button
                 onClick={handleLike}
-                title={isLiked ? 'Unlike Shot' : 'Like Shot'}
+                title={isLiked ? 'Unlike Template' : 'Like Template'}
                 className={`w-9 h-9 rounded-full flex items-center justify-center transition backdrop-blur-md ${
                   isLiked
                     ? 'bg-[#EA4C89] text-white shadow-lg shadow-[#EA4C89]/40'
@@ -105,7 +105,7 @@ export const ShowroomCard: React.FC<ShowroomCardProps> = ({
           <div className="flex justify-center items-center">
             <div className="px-4 py-2 rounded-full bg-white text-black text-xs font-bold tracking-tight shadow-xl flex items-center space-x-1.5 transform translate-y-2 group-hover:translate-y-0 transition-transform">
               <Maximize2 className="w-3.5 h-3.5" />
-              <span>Preview Shot</span>
+              <span>Preview Page</span>
             </div>
           </div>
 
@@ -144,8 +144,8 @@ export const ShowroomCard: React.FC<ShowroomCardProps> = ({
           </span>
 
           {page.isPro && (
-            <span className="text-[9px] uppercase font-bold tracking-wider px-1 py-0.2 rounded bg-white/10 text-zinc-300 border border-white/10 shrink-0">
-              PRO
+            <span className="text-[9px] uppercase font-bold tracking-wider px-1 py-0.2 rounded bg-[#EA4C89]/20 text-[#EA4C89] border border-[#EA4C89]/30 shrink-0">
+              ORIGINAL
             </span>
           )}
         </div>

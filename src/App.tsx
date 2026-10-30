@@ -20,7 +20,7 @@ export default function App() {
   // Likes & Saves persisted in localStorage
   const [likedPages, setLikedPages] = useState<Set<string>>(() => {
     try {
-      const saved = localStorage.getItem('landingbble_likes');
+      const saved = localStorage.getItem('landingvault_likes');
       return saved ? new Set(JSON.parse(saved)) : new Set();
     } catch {
       return new Set();
@@ -29,7 +29,7 @@ export default function App() {
 
   const [savedPages, setSavedPages] = useState<Set<string>>(() => {
     try {
-      const saved = localStorage.getItem('landingbble_saved');
+      const saved = localStorage.getItem('landingvault_saved');
       return saved ? new Set(JSON.parse(saved)) : new Set();
     } catch {
       return new Set();
@@ -48,7 +48,7 @@ export default function App() {
   // Save to localStorage when likedPages changes
   useEffect(() => {
     try {
-      localStorage.setItem('landingbble_likes', JSON.stringify(Array.from(likedPages)));
+      localStorage.setItem('landingvault_likes', JSON.stringify(Array.from(likedPages)));
     } catch (e) {
       console.error(e);
     }
@@ -57,7 +57,7 @@ export default function App() {
   // Save to localStorage when savedPages changes
   useEffect(() => {
     try {
-      localStorage.setItem('landingbble_saved', JSON.stringify(Array.from(savedPages)));
+      localStorage.setItem('landingvault_saved', JSON.stringify(Array.from(savedPages)));
     } catch (e) {
       console.error(e);
     }
@@ -224,13 +224,13 @@ export default function App() {
         {isSavedActive && (
           <div className="mb-6 p-4 rounded-2xl bg-[#EA4C89]/10 border border-[#EA4C89]/30 flex items-center justify-between">
             <span className="text-xs font-semibold text-[#EA4C89]">
-              Viewing your Saved Collection ({savedPages.size} shots)
+              Viewing your Saved Collection ({savedPages.size} templates)
             </span>
             <button
               onClick={() => setIsSavedActive(false)}
               className="text-xs font-semibold text-white hover:underline"
             >
-              Show all shots →
+              Show all templates →
             </button>
           </div>
         )}
@@ -281,45 +281,46 @@ export default function App() {
         />
       )}
 
-      {/* Dribbble Iconic Footer */}
+      {/* Showcase Footer */}
       <footer className="border-t border-white/[0.08] bg-[#0A0915] pt-16 pb-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-12 border-b border-white/[0.06]">
             <div>
               <div className="flex items-center space-x-2 mb-3">
-                <div className="w-7 h-7 rounded-full bg-[#EA4C89] flex items-center justify-center text-white">
-                  <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
-                    <circle cx="12" cy="12" r="10" />
-                    <path d="M19.13 5.09C15.22 9.14 10 10.44 2.25 10.94" />
-                    <path d="M21.75 12.84c-6.62-1.41-12.14 1-16.38 6.32" />
-                    <path d="M8.5 2.5c2 4 2.5 9 1 14.5" />
+                <div className="w-7 h-7 rounded-lg bg-[#EA4C89] flex items-center justify-center text-white">
+                  <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="2" y="3" width="20" height="14" rx="2" />
+                    <line x1="8" y1="21" x2="16" y2="21" />
+                    <line x1="12" y1="17" x2="12" y2="21" />
+                    <circle cx="6" cy="7" r="1" fill="currentColor" />
+                    <circle cx="9" cy="7" r="1" fill="currentColor" />
                   </svg>
                 </div>
                 <span className="text-xl font-bold tracking-tight text-white font-sans">
-                  Landing<span className="text-[#EA4C89]">bble</span>
+                  Landing<span className="text-[#EA4C89]">Vault</span>
                 </span>
               </div>
               <p className="text-sm text-zinc-400 max-w-sm">
-                The world’s leading destination for finding & showcasing beautiful, live-coded landing pages.
+                My personal landing page library & archive. Handcrafted, live-coded HTML templates open for everyone to explore and take inspiration.
               </p>
             </div>
 
             <div className="flex flex-wrap gap-8 text-sm text-zinc-400 font-medium">
-              <span className="hover:text-white transition cursor-pointer">For Designers</span>
-              <span className="hover:text-white transition cursor-pointer">Hire Freelancers</span>
+              <span className="hover:text-white transition cursor-pointer">All Templates</span>
+              <span className="hover:text-white transition cursor-pointer">My Work</span>
+              <span className="hover:text-white transition cursor-pointer">Live Demos</span>
+              <span className="hover:text-white transition cursor-pointer">Responsive Tests</span>
               <span className="hover:text-white transition cursor-pointer">Inspiration</span>
-              <span className="hover:text-white transition cursor-pointer">Advertising</span>
-              <span className="hover:text-white transition cursor-pointer">Design Blog</span>
             </div>
           </div>
 
           <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500">
             <div>
-              © 2026 Landingbble. Powered by Git, React, TypeScript & Vercel.
+              © 2026 LandingVault • Personal Showcase. All rights reserved.
             </div>
             <div className="flex items-center space-x-2">
               <span className="w-2 h-2 rounded-full bg-[#EA4C89] animate-pulse"></span>
-              <span>100% Coded HTML Fidelity • Zero Database</span>
+              <span>100% Coded HTML Fidelity • Zero Database • Git & Vercel Driven</span>
             </div>
           </div>
         </div>
