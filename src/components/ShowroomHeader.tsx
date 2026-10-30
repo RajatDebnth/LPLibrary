@@ -3,12 +3,12 @@ import { ExternalLink } from 'lucide-react';
 
 export const ShowroomHeader: React.FC = () => {
   return (
-    <header className="sticky top-0 z-40 border-b border-white/[0.08] bg-[#0D0C22]/90 backdrop-blur-xl transition-all">
+    <header className="sticky top-0 z-40 border-b border-white/[0.06] bg-[#0D0C22]/15 backdrop-blur-2xl backdrop-saturate-150 transition-all shadow-[0_4px_30px_rgba(0,0,0,0.12)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         {/* Left: Personal Brand Logo */}
         <a href="/" className="flex items-center space-x-2.5 group">
           <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#EA4C89] via-[#F06292] to-[#FF8A80] p-[2px] shadow-[0_0_20px_-3px_rgba(234,76,137,0.5)] group-hover:scale-105 transition-transform">
-            <div className="w-full h-full bg-[#0D0C22] rounded-[10px] flex items-center justify-center">
+            <div className="w-full h-full bg-[#0D0C22]/80 backdrop-blur-sm rounded-[10px] flex items-center justify-center">
               {/* Modern Viewport / Stack Logo */}
               <svg className="w-5 h-5 text-[#EA4C89]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="2" y="3" width="20" height="14" rx="2" />
@@ -29,13 +29,13 @@ export const ShowroomHeader: React.FC = () => {
           </div>
         </a>
 
-        {/* Right: Creator Profile Badge */}
+        {/* Right: Creator Profile Badge with frosted glass */}
         <div className="flex items-center space-x-3">
           <a
             href="https://www.linkedin.com/in/rajat-debnath/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center space-x-2 px-4 py-2 rounded-full bg-[#18172E] hover:bg-[#201F3B] border border-white/[0.08] text-xs font-medium text-zinc-300 hover:text-white transition"
+            className="flex items-center space-x-2 px-4 py-2 rounded-full bg-white/[0.04] hover:bg-white/[0.08] backdrop-blur-xl border border-white/[0.08] hover:border-white/[0.15] text-xs font-medium text-zinc-300 hover:text-white transition shadow-sm"
             title="Connect with Rajat Debnath on LinkedIn"
           >
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
