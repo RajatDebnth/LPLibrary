@@ -28,7 +28,7 @@ interface ShowroomModalProps {
   likeCount: number;
   onToggleLike: (e: React.MouseEvent, pageId: string) => void;
   onToggleSave: (e: React.MouseEvent, pageId: string) => void;
-  onSelectTag: (tag: string) => void;
+  onSelectTag?: (tag: string) => void;
 }
 
 export const ShowroomModal: React.FC<ShowroomModalProps> = ({
@@ -45,7 +45,6 @@ export const ShowroomModal: React.FC<ShowroomModalProps> = ({
   likeCount,
   onToggleLike,
   onToggleSave,
-  onSelectTag,
 }) => {
   const [viewport, setViewport] = useState<ViewportMode>('desktop');
   const [copied, setCopied] = useState(false);
@@ -77,9 +76,9 @@ export const ShowroomModal: React.FC<ShowroomModalProps> = ({
   const getViewportWidth = () => {
     switch (viewport) {
       case 'mobile':
-        return 'w-[375px] h-[812px] rounded-3xl border-4 border-zinc-700 shadow-2xl';
+        return 'w-[375px] h-[812px] max-h-[calc(100vh-140px)] rounded-3xl border-4 border-zinc-700 shadow-2xl';
       case 'tablet':
-        return 'w-[768px] h-[1024px] rounded-2xl border-4 border-zinc-700 shadow-2xl';
+        return 'w-[768px] h-[1024px] max-h-[calc(100vh-140px)] rounded-2xl border-4 border-zinc-700 shadow-2xl';
       case 'desktop':
       default:
         return 'w-full h-full rounded-none border-0';
@@ -216,6 +215,16 @@ export const ShowroomModal: React.FC<ShowroomModalProps> = ({
             <span className="text-xs font-semibold font-mono">{likeCount}</span>
           </button>
 
+          {/* Copy Direct Link */}
+          <button
+            onClick={handleCopy}
+            className="flex items-center space-x-1.5 px-3.5 py-2.5 rounded-full bg-[#0D0C22] border border-white/10 hover:border-white/20 text-zinc-300 hover:text-white transition text-xs font-semibold"
+            title={copied ? 'Link Copied!' : 'Copy Direct Link'}
+          >
+            {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+            <span className="hidden sm:inline">{copied ? 'Copied' : 'Copy Link'}</span>
+          </button>
+
           {/* Visit Live Page Button */}
           <a
             href={page.url}
@@ -238,10 +247,20 @@ export const ShowroomModal: React.FC<ShowroomModalProps> = ({
         </div>
       </div>
 
-      {/* Main Interactive Stage */}
-      <div className="flex-1 overflow-auto bg-[#0A0915] flex flex-col items-center justify-start p-4 sm:p-8">
+      {/* Main Interactive Stage - Full space for preview site */}
+      <div
+        className={`flex-1 w-full bg-[#0A0915] flex flex-col items-center overflow-auto ${
+          viewport === 'desktop' ? 'p-0 justify-stretch' : 'p-4 sm:p-8 justify-center'
+        }`}
+      >
         {/* Canvas Frame */}
-        <div className={`transition-all duration-300 bg-black overflow-hidden flex flex-col my-auto ${getViewportWidth()}`}>
+        <div
+          className={`transition-all duration-300 bg-black overflow-hidden flex flex-col ${
+            viewport === 'desktop'
+              ? 'w-full h-full rounded-none border-0'
+              : `my-auto shrink-0 ${getViewportWidth()}`
+          }`}
+        >
           <iframe
             key={page.id}
             src={`${page.url}?v=${Date.parse(page.updatedAt) || '1'}`}
@@ -249,43 +268,6 @@ export const ShowroomModal: React.FC<ShowroomModalProps> = ({
             className="w-full h-full border-0 bg-white"
             sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
           />
-        </div>
-
-        {/* Shot Info & Tags bar beneath canvas */}
-        <div className="w-full max-w-4xl mt-6 p-6 rounded-2xl bg-[#151426] border border-white/[0.08] shadow-xl shrink-0">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
-            <div>
-              <h3 className="text-lg font-bold text-white mb-1">{page.title}</h3>
-              <p className="text-sm text-zinc-400">{page.description}</p>
-            </div>
-
-            <button
-              onClick={handleCopy}
-              className="flex items-center space-x-1.5 px-3 py-2 rounded-full bg-[#0D0C22] border border-white/10 text-xs font-medium text-zinc-300 hover:text-white hover:border-white/20 transition self-start sm:self-auto"
-            >
-              {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-              <span>{copied ? 'Link Copied!' : 'Copy Link'}</span>
-            </button>
-          </div>
-
-          {/* Tags */}
-          {page.tags && page.tags.length > 0 && (
-            <div className="flex flex-wrap items-center gap-2 pt-4 border-t border-white/[0.06]">
-              <span className="text-xs text-zinc-500 font-medium">Tags:</span>
-              {page.tags.map((tag) => (
-                <button
-                  key={tag}
-                  onClick={() => {
-                    onSelectTag(tag);
-                    onClose();
-                  }}
-                  className="px-3 py-1 rounded-full bg-white/[0.04] hover:bg-[#EA4C89]/20 hover:text-[#EA4C89] border border-white/[0.08] text-xs text-zinc-300 transition"
-                >
-                  #{tag}
-                </button>
-              ))}
-            </div>
-          )}
         </div>
       </div>
     </div>
