@@ -3,8 +3,8 @@ import { ExternalLink } from 'lucide-react';
 
 export const ShowroomHeader: React.FC = () => {
   return (
-    <header className="sticky top-0 z-40 border-b border-white/[0.06] bg-[#0D0C22]/15 backdrop-blur-2xl backdrop-saturate-150 transition-all shadow-[0_4px_30px_rgba(0,0,0,0.12)]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
+    <header className="sticky top-3 sm:top-4 z-40 w-full px-4 sm:px-6 lg:px-8 pointer-events-none mb-3">
+      <div className="max-w-7xl mx-auto h-14 px-4 sm:px-6 rounded-2xl bg-[#0D0C22]/70 backdrop-blur-2xl backdrop-saturate-150 border border-white/[0.12] shadow-[0_12px_40px_-10px_rgba(0,0,0,0.6)] flex items-center justify-between pointer-events-auto transition-all">
         {/* Left: Personal Brand Logo */}
         <a href="/" className="flex items-center space-x-2.5 group">
           <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-[#EA4C89] via-[#F06292] to-[#FF8A80] p-[2px] shadow-[0_0_16px_-3px_rgba(234,76,137,0.5)] group-hover:scale-105 transition-transform">
