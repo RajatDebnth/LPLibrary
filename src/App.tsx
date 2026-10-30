@@ -7,7 +7,6 @@ import { FilterBar } from './components/FilterBar';
 import { ShowroomCard } from './components/ShowroomCard';
 import { ShowroomModal } from './components/ShowroomModal';
 import { EmptyState } from './components/EmptyState';
-import { ShareModal } from './components/ShareModal';
 
 const manifest = manifestData as PagesManifest;
 
@@ -17,7 +16,6 @@ export default function App() {
   const [sortBy, setSortBy] = useState<SortOption>('popular');
   const [previewPage, setPreviewPage] = useState<LandingPage | null>(null);
   const [isSavedActive, setIsSavedActive] = useState(false);
-  const [isShareOpen, setIsShareOpen] = useState(false);
 
   // Likes & Saves persisted in localStorage
   const [likedPages, setLikedPages] = useState<Set<string>>(() => {
@@ -188,8 +186,8 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#0D0C22] bg-dribbble-mesh text-[#F3F4F6] flex flex-col antialiased selection:bg-[#EA4C89]/30 selection:text-[#EA4C89]">
-      {/* Clean Top Navigation with Share Action */}
-      <ShowroomHeader onOpenShare={() => setIsShareOpen(true)} />
+      {/* Clean Top Navigation with 1-Click Share Dropdown */}
+      <ShowroomHeader />
 
       {/* Main Container */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pb-24">
@@ -276,12 +274,6 @@ export default function App() {
           onSelectTag={handleSelectTag}
         />
       )}
-
-      {/* Social Media Share Modal */}
-      <ShareModal
-        isOpen={isShareOpen}
-        onClose={() => setIsShareOpen(false)}
-      />
 
       {/* Showcase Footer */}
       <footer className="border-t border-white/[0.08] bg-[#0A0915] pt-16 pb-12 px-4 sm:px-6 lg:px-8">
