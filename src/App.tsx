@@ -193,8 +193,6 @@ export default function App() {
         likedCount={likedPages.size}
         onFilterSaved={() => setIsSavedActive((prev) => !prev)}
         isSavedActive={isSavedActive}
-        searchTerm={searchTerm}
-        onSearchChange={setSearchTerm}
       />
 
       {/* Main Container */}

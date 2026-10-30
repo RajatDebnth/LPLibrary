@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search, Heart, Bookmark, Upload } from 'lucide-react';
+import { Heart, Bookmark, Upload } from 'lucide-react';
 
 interface ShowroomHeaderProps {
   totalCount: number;
@@ -7,8 +7,6 @@ interface ShowroomHeaderProps {
   likedCount: number;
   onFilterSaved: () => void;
   isSavedActive: boolean;
-  searchTerm: string;
-  onSearchChange: (value: string) => void;
 }
 
 export const ShowroomHeader: React.FC<ShowroomHeaderProps> = ({
@@ -17,8 +15,6 @@ export const ShowroomHeader: React.FC<ShowroomHeaderProps> = ({
   likedCount,
   onFilterSaved,
   isSavedActive,
-  searchTerm,
-  onSearchChange,
 }) => {
   return (
     <header className="sticky top-0 z-40 border-b border-white/[0.08] bg-[#0D0C22]/90 backdrop-blur-xl transition-all">
@@ -65,20 +61,6 @@ export const ShowroomHeader: React.FC<ShowroomHeaderProps> = ({
               Inspiration
             </span>
           </nav>
-        </div>
-
-        {/* Center: Search Bar in Header for medium+ screens */}
-        <div className="hidden md:flex flex-1 max-w-md mx-4">
-          <div className="relative w-full">
-            <Search className="w-4 h-4 text-zinc-400 absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none" />
-            <input
-              type="text"
-              value={searchTerm}
-              onChange={(e) => onSearchChange(e.target.value)}
-              placeholder="Search 18M+ creative shots..."
-              className="w-full pl-11 pr-4 py-2.5 rounded-full bg-[#18172E] border border-white/[0.08] text-sm text-white placeholder-zinc-400 focus:outline-none focus:border-[#EA4C89] focus:ring-2 focus:ring-[#EA4C89]/20 transition"
-            />
-          </div>
         </div>
 
         {/* Right: Actions, Saved Collection, Stats & Upload */}
