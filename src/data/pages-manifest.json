@@ -1,5 +1,5 @@
 {
-  "scannedAt": "2026-10-30T13:33:42.552Z",
+  "scannedAt": "2026-10-30T13:45:23.770Z",
   "totalCount": 5,
   "categories": [
     "Business",
@@ -8,6 +8,23 @@
     "SaaS"
   ],
   "pages": [
+    {
+      "id": "ecommerce-pencil",
+      "title": "PENCIL CLUB® — Make Your Mark",
+      "description": "PENCIL CLUB — ridiculously good pencils for big ideas, tiny doodles, and everything in between.",
+      "category": "Ecommerce",
+      "categorySlug": "ecommerce",
+      "url": "/landing-pages/Ecommerce/Pencil/index.html",
+      "fileName": "index.html",
+      "folder": "Ecommerce/Pencil",
+      "tags": [],
+      "updatedAt": "2026-10-30T13:45:16.543Z",
+      "author": "Personal Project",
+      "avatarGradient": "from-emerald-400 to-teal-500",
+      "initialLikes": 206,
+      "viewsCount": "2.2k",
+      "isPro": true
+    },
     {
       "id": "portfolio-goodfit",
       "title": "Goodfit — Better people. Better work. Better fit.",
@@ -23,23 +40,6 @@
       "avatarGradient": "from-amber-400 to-orange-500",
       "initialLikes": 195,
       "viewsCount": "2.5k",
-      "isPro": true
-    },
-    {
-      "id": "ecommerce-pencil",
-      "title": "PENCIL CLUB® — Make Your Mark",
-      "description": "PENCIL CLUB — ridiculously good pencils for big ideas, tiny doodles, and everything in between.",
-      "category": "Ecommerce",
-      "categorySlug": "ecommerce",
-      "url": "/landing-pages/Ecommerce/Pencil/index.html",
-      "fileName": "index.html",
-      "folder": "Ecommerce/Pencil",
-      "tags": [],
-      "updatedAt": "2026-10-30T11:58:31.425Z",
-      "author": "Personal Project",
-      "avatarGradient": "from-emerald-400 to-teal-500",
-      "initialLikes": 206,
-      "viewsCount": "2.2k",
       "isPro": true
     },
     {
