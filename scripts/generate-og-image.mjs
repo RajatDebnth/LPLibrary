@@ -28,3 +28,4 @@ try {
   console.error('[OG Generator] Error:', err);
   process.exit(1);
 }
+

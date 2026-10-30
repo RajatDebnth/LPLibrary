@@ -35,9 +35,21 @@ export const ShowroomHeader: React.FC = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const currentUrl = typeof window !== 'undefined' ? window.location.origin : 'https://landingvault.dev';
+  // Determine if running on localhost
+  const isLocalhost =
+    typeof window !== 'undefined' &&
+    (window.location.hostname === 'localhost' ||
+      window.location.hostname === '127.0.0.1' ||
+      window.location.hostname.includes('192.168.'));
 
-  // Pre-crafted hooked post texts with creator credit & website URL
+  // On localhost, cloud crawlers (LinkedIn & Twitter) cannot connect to your laptop.
+  // We point to the public GitHub repo URL so social media platforms can fetch real metadata & visual cards!
+  // In production (Vercel), it uses your live deployment URL.
+  const currentUrl = isLocalhost
+    ? 'https://github.com/RajatDebnth/LPLibrary'
+    : window.location.origin;
+
+  // Pre-crafted hooked post texts with creator credit
   const shareData = {
     linkedin: `Found this incredible Landing Page Library crafted by Rajat Debnath 🚀\n\nLive-coded HTML & CSS templates with 100% code fidelity, live sandbox viewports, and zero backend bloat. Pure design and frontend inspiration!\n\n${currentUrl}`,
     x: `Just stumbled upon this slick Landing Page Library crafted by Rajat Debnath ⚡\n\nCurated live-coded HTML templates with zero database overhead and responsive device viewports. Pure inspiration!\n\n${currentUrl} #webdesign #frontend #buildinpublic`,
@@ -50,9 +62,10 @@ export const ShowroomHeader: React.FC = () => {
 
     switch (platform) {
       case 'linkedin':
-        // Copies text to clipboard silently & opens LinkedIn's native post creator pre-filled
+        // 1. Copy the hooked text to clipboard so user can paste if desired
         navigator.clipboard.writeText(shareData.linkedin);
-        targetUrl = `https://www.linkedin.com/feed/?shareActive=true&text=${encodeURIComponent(shareData.linkedin)}`;
+        // 2. Open LinkedIn's official OpenGraph Share Dialog which ALWAYS renders the creative visual card template:
+        targetUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(currentUrl)}`;
         break;
 
       case 'x':
@@ -131,7 +144,7 @@ export const ShowroomHeader: React.FC = () => {
                   1-Click Direct Post
                 </p>
                 <p className="text-xs text-zinc-400">
-                  Pre-crafted post ready to publish
+                  Pre-crafted post with visual card template
                 </p>
               </div>
 
@@ -146,7 +159,7 @@ export const ShowroomHeader: React.FC = () => {
                   </div>
                   <div className="min-w-0 flex-1">
                     <div className="font-semibold text-white group-hover:text-[#0077B5] transition">Share on LinkedIn</div>
-                    <div className="text-[10px] text-zinc-400 truncate">Post box opens pre-filled</div>
+                    <div className="text-[10px] text-zinc-400 truncate">Renders visual card template</div>
                   </div>
                 </button>
 
@@ -160,7 +173,7 @@ export const ShowroomHeader: React.FC = () => {
                   </div>
                   <div className="min-w-0 flex-1">
                     <div className="font-semibold text-white transition">Post on Twitter / X</div>
-                    <div className="text-[10px] text-zinc-400 truncate">Post box opens pre-filled</div>
+                    <div className="text-[10px] text-zinc-400 truncate">Pre-filled with site &amp; visual card</div>
                   </div>
                 </button>
 
@@ -174,7 +187,7 @@ export const ShowroomHeader: React.FC = () => {
                   </div>
                   <div className="min-w-0 flex-1">
                     <div className="font-semibold text-white group-hover:text-emerald-400 transition">Share on WhatsApp</div>
-                    <div className="text-[10px] text-zinc-400 truncate">Chat message with preview</div>
+                    <div className="text-[10px] text-zinc-400 truncate">Chat message with visual card</div>
                   </div>
                 </button>
 
@@ -188,7 +201,7 @@ export const ShowroomHeader: React.FC = () => {
                   </div>
                   <div className="min-w-0 flex-1">
                     <div className="font-semibold text-white transition">Post on Threads</div>
-                    <div className="text-[10px] text-zinc-400 truncate">Threads box opens pre-filled</div>
+                    <div className="text-[10px] text-zinc-400 truncate">Threads composer with link</div>
                   </div>
                 </button>
 
