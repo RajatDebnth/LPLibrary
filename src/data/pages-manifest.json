@@ -1,6 +1,6 @@
 {
-  "scannedAt": "2026-10-30T10:12:49.538Z",
-  "totalCount": 6,
+  "scannedAt": "2026-10-30T12:39:21.549Z",
+  "totalCount": 5,
   "categories": [
     "Business",
     "Ecommerce",
@@ -8,6 +8,57 @@
     "SaaS"
   ],
   "pages": [
+    {
+      "id": "portfolio-goodfit",
+      "title": "Goodfit — Better people. Better work. Better fit.",
+      "description": "Goodfit connects ambitious businesses with exceptional people and helps skilled freelancers find work worth doing. Better people. Better work. Better fit.",
+      "category": "Portfolio",
+      "categorySlug": "portfolio",
+      "url": "/landing-pages/Portfolio/GoodFit/index.html",
+      "fileName": "index.html",
+      "folder": "Portfolio/GoodFit",
+      "tags": [],
+      "updatedAt": "2026-10-30T12:33:13.005Z",
+      "author": "Personal Project",
+      "avatarGradient": "from-amber-400 to-orange-500",
+      "initialLikes": 195,
+      "viewsCount": "2.5k",
+      "isPro": true
+    },
+    {
+      "id": "ecommerce-pencil",
+      "title": "PENCIL CLUB® — Make Your Mark",
+      "description": "PENCIL CLUB — ridiculously good pencils for big ideas, tiny doodles, and everything in between.",
+      "category": "Ecommerce",
+      "categorySlug": "ecommerce",
+      "url": "/landing-pages/Ecommerce/Pencil/index.html",
+      "fileName": "index.html",
+      "folder": "Ecommerce/Pencil",
+      "tags": [],
+      "updatedAt": "2026-10-30T11:58:31.425Z",
+      "author": "Personal Project",
+      "avatarGradient": "from-emerald-400 to-teal-500",
+      "initialLikes": 206,
+      "viewsCount": "2.2k",
+      "isPro": true
+    },
+    {
+      "id": "business-forma",
+      "title": "Forma — A library for visual minds",
+      "description": "Handcrafted Business landing page template.",
+      "category": "Business",
+      "categorySlug": "business",
+      "url": "/landing-pages/Business/Forma/index.html",
+      "fileName": "index.html",
+      "folder": "Business/Forma",
+      "tags": [],
+      "updatedAt": "2026-10-30T10:48:28.178Z",
+      "author": "Personal Project",
+      "avatarGradient": "from-amber-400 to-orange-500",
+      "initialLikes": 100,
+      "viewsCount": "3.8k",
+      "isPro": true
+    },
     {
       "id": "business-signal_social",
       "title": "Signal Social — Make your brand impossible to scroll past",
@@ -40,98 +91,6 @@
       "avatarGradient": "from-purple-500 to-indigo-500",
       "initialLikes": 148,
       "viewsCount": "3.6k",
-      "isPro": true
-    },
-    {
-      "id": "business-vanguard-capital",
-      "title": "Vanguard Global — Private Equity & Frontier Growth Advisory",
-      "description": "Strategic capital deployment and cross-border M&A advisory for transformative technology enterprises.",
-      "category": "Business",
-      "categorySlug": "business",
-      "url": "/landing-pages/Business/vanguard-capital/index.html",
-      "fileName": "index.html",
-      "folder": "Business/vanguard-capital",
-      "tags": [
-        "Business",
-        "Venture Capital",
-        "Private Equity",
-        "Advisory",
-        "Finance"
-      ],
-      "updatedAt": "2026-10-29T22:32:01.577Z",
-      "author": "Personal Project",
-      "avatarGradient": "from-pink-500 to-rose-500",
-      "initialLikes": 62,
-      "viewsCount": "4.8k",
-      "isPro": true
-    },
-    {
-      "id": "saas-apex-ai",
-      "title": "Apex AI — Next-Gen Autonomous Intelligence Platform",
-      "description": "Build, simulate and deploy enterprise-grade autonomous agents with zero latency and end-to-end cryptographic verifiability.",
-      "category": "SaaS",
-      "categorySlug": "saas",
-      "url": "/landing-pages/SaaS/apex-ai/index.html",
-      "fileName": "index.html",
-      "folder": "SaaS/apex-ai",
-      "tags": [
-        "AI",
-        "Autonomous Agents",
-        "SaaS",
-        "Enterprise",
-        "Machine Learning"
-      ],
-      "updatedAt": "2026-10-29T22:31:53.767Z",
-      "author": "Personal Project",
-      "avatarGradient": "from-pink-500 to-rose-500",
-      "initialLikes": 122,
-      "viewsCount": "4.4k",
-      "isPro": true
-    },
-    {
-      "id": "portfolio-elena-rostova",
-      "title": "Elena Rostova — Principal Design Engineer & Art Director",
-      "description": "Portfolio of Elena Rostova. Crafting digital products, interactive systems, and spatial interfaces for forward-thinking technology companies.",
-      "category": "Portfolio",
-      "categorySlug": "portfolio",
-      "url": "/landing-pages/Portfolio/elena-rostova/index.html",
-      "fileName": "index.html",
-      "folder": "Portfolio/elena-rostova",
-      "tags": [
-        "Portfolio",
-        "Design Engineer",
-        "Art Director",
-        "Creative Development",
-        "Minimalist"
-      ],
-      "updatedAt": "2026-10-29T22:31:53.572Z",
-      "author": "Personal Project",
-      "avatarGradient": "from-amber-400 to-orange-500",
-      "initialLikes": 185,
-      "viewsCount": "2.3k",
-      "isPro": true
-    },
-    {
-      "id": "ecommerce-chronos-luxury",
-      "title": "CHRONOS — The Obsidian Tourbillon Edition",
-      "description": "Handcrafted in Geneva. Forged from aerospace-grade Grade 5 titanium with perpetual obsidian movement.",
-      "category": "Ecommerce",
-      "categorySlug": "ecommerce",
-      "url": "/landing-pages/Ecommerce/chronos-luxury/index.html",
-      "fileName": "index.html",
-      "folder": "Ecommerce/chronos-luxury",
-      "tags": [
-        "Luxury",
-        "Watch",
-        "Ecommerce",
-        "Horology",
-        "Titanium"
-      ],
-      "updatedAt": "2026-10-29T22:31:53.438Z",
-      "author": "Personal Project",
-      "avatarGradient": "from-emerald-400 to-teal-500",
-      "initialLikes": 171,
-      "viewsCount": "3.1k",
       "isPro": true
     }
   ]

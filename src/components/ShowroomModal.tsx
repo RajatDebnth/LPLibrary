@@ -71,28 +71,28 @@ export const ShowroomModal: React.FC<ShowroomModalProps> = ({
   return (
     <div className="fixed inset-0 z-50 flex flex-col bg-[#0D0C22]/95 backdrop-blur-2xl text-white animate-fade-in overflow-hidden">
       {/* Top Dribbble-Style Shot Header */}
-      <div className="h-20 px-4 sm:px-8 border-b border-white/[0.08] bg-[#151426] flex items-center justify-between shrink-0 gap-4">
+      <div className="h-14 px-4 sm:px-6 border-b border-white/[0.08] bg-[#151426] flex items-center justify-between shrink-0 gap-4">
         {/* Left: Author Profile & Shot Title */}
-        <div className="flex items-center space-x-3.5 min-w-0">
+        <div className="flex items-center space-x-3 min-w-0">
           <div
-            className={`w-10 h-10 rounded-full bg-gradient-to-tr ${page.avatarGradient} flex items-center justify-center text-sm font-bold text-white shadow-md shrink-0`}
+            className={`w-8 h-8 rounded-full bg-gradient-to-tr ${page.avatarGradient} flex items-center justify-center text-xs font-bold text-white shadow-md shrink-0`}
           >
             {page.author.charAt(0)}
           </div>
 
           <div className="min-w-0">
             <div className="flex items-center space-x-2">
-              <h2 className="text-base font-bold text-white truncate max-w-[220px] sm:max-w-md">
+              <h2 className="text-sm sm:text-base font-bold text-white truncate max-w-[220px] sm:max-w-md">
                 {page.title}
               </h2>
               {page.isPro && (
-                <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-[#EA4C89]/20 text-[#EA4C89] border border-[#EA4C89]/30 shrink-0">
+                <span className="text-[9px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-[#EA4C89]/20 text-[#EA4C89] border border-[#EA4C89]/30 shrink-0">
                   ORIGINAL
                 </span>
               )}
             </div>
 
-            <div className="flex items-center space-x-2 text-xs text-zinc-400">
+            <div className="flex items-center space-x-2 text-[11px] text-zinc-400">
               <span className="font-medium text-white hover:text-[#EA4C89] transition">
                 {page.author}
               </span>
@@ -105,15 +105,14 @@ export const ShowroomModal: React.FC<ShowroomModalProps> = ({
         </div>
 
         {/* Center: Device Viewport Switcher */}
-        <div className="hidden md:flex items-center p-1 rounded-full bg-[#0D0C22] border border-white/[0.08]">
+        <div className="hidden md:flex items-center p-0.5 rounded-full bg-[#0D0C22] border border-white/[0.08]">
           <button
             onClick={() => setViewport('desktop')}
             title="Desktop View (1440px)"
-            className={`flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold transition ${
-              viewport === 'desktop'
-                ? 'bg-white text-black shadow-md'
-                : 'text-zinc-400 hover:text-white'
-            }`}
+            className={`flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-semibold transition ${viewport === 'desktop'
+              ? 'bg-white text-black shadow-md'
+              : 'text-zinc-400 hover:text-white'
+              }`}
           >
             <Monitor className="w-3.5 h-3.5" />
             <span>Desktop</span>
@@ -122,11 +121,10 @@ export const ShowroomModal: React.FC<ShowroomModalProps> = ({
           <button
             onClick={() => setViewport('tablet')}
             title="Tablet View (768px)"
-            className={`flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold transition ${
-              viewport === 'tablet'
-                ? 'bg-white text-black shadow-md'
-                : 'text-zinc-400 hover:text-white'
-            }`}
+            className={`flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-semibold transition ${viewport === 'tablet'
+              ? 'bg-white text-black shadow-md'
+              : 'text-zinc-400 hover:text-white'
+              }`}
           >
             <Tablet className="w-3.5 h-3.5" />
             <span>Tablet</span>
@@ -135,11 +133,10 @@ export const ShowroomModal: React.FC<ShowroomModalProps> = ({
           <button
             onClick={() => setViewport('mobile')}
             title="Mobile View (375px)"
-            className={`flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold transition ${
-              viewport === 'mobile'
-                ? 'bg-white text-black shadow-md'
-                : 'text-zinc-400 hover:text-white'
-            }`}
+            className={`flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-semibold transition ${viewport === 'mobile'
+              ? 'bg-white text-black shadow-md'
+              : 'text-zinc-400 hover:text-white'
+              }`}
           >
             <Smartphone className="w-3.5 h-3.5" />
             <span>Mobile</span>
@@ -147,13 +144,13 @@ export const ShowroomModal: React.FC<ShowroomModalProps> = ({
         </div>
 
         {/* Right: Dribbble Action Buttons */}
-        <div className="flex items-center space-x-2.5">
+        <div className="flex items-center space-x-2">
           {/* Previous / Next buttons */}
           <div className="hidden lg:flex items-center space-x-1 border-r border-white/10 pr-2 mr-1">
             <button
               onClick={onPrev}
               disabled={!hasPrev}
-              className="p-2 rounded-full text-zinc-400 hover:text-white hover:bg-white/5 disabled:opacity-30 disabled:hover:bg-transparent"
+              className="p-1.5 rounded-full text-zinc-400 hover:text-white hover:bg-white/5 disabled:opacity-30 disabled:hover:bg-transparent"
               title="Previous template (Left Arrow)"
             >
               <ChevronLeft className="w-4 h-4" />
@@ -164,7 +161,7 @@ export const ShowroomModal: React.FC<ShowroomModalProps> = ({
             <button
               onClick={onNext}
               disabled={!hasNext}
-              className="p-2 rounded-full text-zinc-400 hover:text-white hover:bg-white/5 disabled:opacity-30 disabled:hover:bg-transparent"
+              className="p-1.5 rounded-full text-zinc-400 hover:text-white hover:bg-white/5 disabled:opacity-30 disabled:hover:bg-transparent"
               title="Next template (Right Arrow)"
             >
               <ChevronRight className="w-4 h-4" />
@@ -176,7 +173,7 @@ export const ShowroomModal: React.FC<ShowroomModalProps> = ({
             href={page.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center space-x-1.5 px-4 py-2.5 rounded-full bg-[#EA4C89] hover:bg-[#F06292] text-white text-xs font-bold transition shadow-lg shadow-[#EA4C89]/30"
+            className="flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full bg-[#EA4C89] hover:bg-[#F06292] text-white text-xs font-bold transition shadow-lg shadow-[#EA4C89]/30"
           >
             <span>Visit Live Page</span>
             <ExternalLink className="w-3.5 h-3.5" />
@@ -185,7 +182,7 @@ export const ShowroomModal: React.FC<ShowroomModalProps> = ({
           {/* Close Modal */}
           <button
             onClick={onClose}
-            className="p-2.5 rounded-full bg-[#0D0C22] border border-white/10 hover:bg-white/10 text-zinc-400 hover:text-white transition ml-1"
+            className="p-2 rounded-full bg-[#0D0C22] border border-white/10 hover:bg-white/10 text-zinc-400 hover:text-white transition ml-1"
             title="Close Preview (Esc)"
           >
             <X className="w-4 h-4" />
@@ -195,17 +192,15 @@ export const ShowroomModal: React.FC<ShowroomModalProps> = ({
 
       {/* Main Interactive Stage - Full space for preview site */}
       <div
-        className={`flex-1 w-full bg-[#0A0915] flex flex-col items-center overflow-auto ${
-          viewport === 'desktop' ? 'p-0 justify-stretch' : 'p-4 sm:p-8 justify-center'
-        }`}
+        className={`flex-1 w-full bg-[#0A0915] flex flex-col items-center overflow-auto ${viewport === 'desktop' ? 'p-0 justify-stretch' : 'p-4 sm:p-8 justify-center'
+          }`}
       >
         {/* Canvas Frame */}
         <div
-          className={`transition-all duration-300 bg-black overflow-hidden flex flex-col ${
-            viewport === 'desktop'
-              ? 'w-full h-full rounded-none border-0'
-              : `my-auto shrink-0 ${getViewportWidth()}`
-          }`}
+          className={`transition-all duration-300 bg-black overflow-hidden flex flex-col ${viewport === 'desktop'
+            ? 'w-full h-full rounded-none border-0'
+            : `my-auto shrink-0 ${getViewportWidth()}`
+            }`}
         >
           <iframe
             key={page.id}

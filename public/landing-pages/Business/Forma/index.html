@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#09090c" />
+<title>Forma — A library for visual minds</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+:root{--bg:#09090c;--panel:#111116;--panel2:#17171e;--line:rgba(255,255,255,.09);--muted:#9999a8;--white:#f4f2fa;--purple:#8b5cf6;--blue:#4f46e5;--lime:#b7f36b;--radius:22px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--white);font-family:"DM Sans",sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}button,input{font:inherit}button{cursor:pointer}
+.container{width:min(1440px,calc(100% - 64px));margin:auto}
+nav{height:82px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.06);position:relative;z-index:5}
+.logo{font:800 27px Manrope;letter-spacing:-1.5px;display:flex;align-items:center;gap:9px}.logo-mark{width:28px;height:28px;border-radius:9px;background:linear-gradient(135deg,#a78bfa,#5b5cf0 65%,#40d9d0);display:grid;place-items:center;color:#08080b;font-size:16px}
+.navlinks{display:flex;gap:34px;margin-left:45px;color:#c4c2cc;font-size:14px}.navlinks a:hover{color:#fff}.navright{display:flex;gap:12px;align-items:center}
+.btn{border:1px solid var(--line);background:#19191f;color:#fff;padding:12px 18px;border-radius:12px;font-weight:700;transition:.2s}.btn:hover{transform:translateY(-2px);border-color:#7770ee}.btn.primary{background:linear-gradient(110deg,#a855f7,#6554ee);border:0;box-shadow:0 8px 30px #7049ed33}.btn.ghost{background:transparent}
+.menu{display:none;background:none;border:0;color:white;font-size:24px}
+.hero{position:relative;text-align:center;padding:92px 0 58px;isolation:isolate}.hero:before{content:"";position:absolute;z-index:-1;width:780px;height:480px;left:50%;top:10px;transform:translateX(-50%);background:radial-gradient(ellipse,#5030a52c 0%,#28225c17 42%,transparent 72%);filter:blur(12px)}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--lime);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase}.pulse{width:8px;height:8px;background:var(--lime);border-radius:50%;box-shadow:0 0 15px var(--lime)}
+h1{font:800 clamp(44px,6.2vw,82px)/1.05 Manrope;letter-spacing:-.065em;max-width:900px;margin:23px auto 20px}.gradient{background:linear-gradient(100deg,#fff 12%,#c9b9ff 52%,#8c7aff 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:#aaa9b7;font-size:18px;line-height:1.65;max-width:640px;margin:0 auto}
+.search-wrap{max-width:710px;margin:36px auto 0;padding:7px;background:#e8e7ef;border-radius:17px;display:flex;gap:8px;box-shadow:0 18px 60px #0008}.search-wrap input{flex:1;min-width:0;border:0;outline:0;background:transparent;color:#24222d;padding:0 16px;font-size:15px}.search-wrap input::placeholder{color:#777582}.search-wrap button{border:0;border-radius:12px;padding:15px 27px;background:#5548eb;color:white;font-weight:700}
+.quick-tags{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin-top:18px}.quick-tags span{font-size:12px;color:#a8a6b5;border:1px solid var(--line);border-radius:99px;padding:7px 12px}
+.hero-art{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin:65px -8vw 0;transform:rotate(-2deg);opacity:.92}
+.art-tile{height:154px;border:1px solid #ffffff12;border-radius:16px;overflow:hidden;background:#17151e;position:relative;box-shadow:0 12px 35px #0008}.art-tile img{width:100%;height:100%;object-fit:cover;opacity:.8;transition:.4s}.art-tile:nth-child(2n){transform:translateY(18px)}.art-tile:after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,#a855f733,transparent 65%)}
+.section{padding:78px 0}.section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:27px;gap:20px}.kicker{color:#a78bfa;text-transform:uppercase;font-size:11px;font-weight:700;letter-spacing:.14em}.section h2{font:800 clamp(28px,3.5vw,42px) Manrope;letter-spacing:-.045em;margin:8px 0 0}.section-sub{color:var(--muted);margin:9px 0 0;font-size:14px}.text-link{color:#c5b5ff;font-weight:700;font-size:13px}
+.filterbar{display:flex;gap:8px;flex-wrap:wrap;margin:25px 0}.filter{padding:9px 15px;border:1px solid var(--line);background:#121217;color:#aaa8b6;border-radius:999px;font-size:13px}.filter.active,.filter:hover{background:#29213e;border-color:#7758ce;color:white}
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:17px}.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:.25s;min-width:0}.card:hover{transform:translateY(-5px);border-color:#6c58a8;box-shadow:0 20px 45px #0005}.thumb{height:235px;position:relative;overflow:hidden;background:#1c1a25}.thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:.5s}.card:hover .thumb img{transform:scale(1.06)}.save{position:absolute;top:12px;right:12px;width:34px;height:34px;border:1px solid #ffffff40;border-radius:50%;background:#111a;color:#fff;font-size:16px;backdrop-filter:blur(10px)}.save.saved{background:#8b5cf6;border-color:#8b5cf6}.type{position:absolute;bottom:12px;left:12px;padding:6px 9px;border-radius:7px;background:#09090dcc;border:1px solid #ffffff25;font-size:10px;text-transform:uppercase;letter-spacing:.08em}
+.card-info{padding:15px 16px 16px}.card-title{font-weight:700;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.card-meta{display:flex;align-items:center;justify-content:space-between;color:#92909e;font-size:12px;margin-top:10px}.creator{display:flex;align-items:center;gap:7px}.avatar{width:22px;height:22px;border-radius:50%;object-fit:cover}.stats{display:flex;gap:11px}
+.feature-band{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}.feature{border:1px solid var(--line);border-radius:24px;background:radial-gradient(circle at 80% 20%,#49308a44,transparent 40%),#111116;padding:38px;min-height:280px;position:relative;overflow:hidden}.feature h3{font:800 30px Manrope;letter-spacing:-.04em;margin:14px 0 10px;max-width:390px}.feature p{color:#aaa8b5;max-width:390px;line-height:1.6}.feature .btn{display:inline-block;margin-top:14px}.feature-visual{position:absolute;right:3%;bottom:-25px;width:40%;height:78%;border-radius:20px;transform:rotate(8deg);background:linear-gradient(145deg,#ffb7a1,#b46bff 45%,#4c61db);box-shadow:0 25px 70px #0008}.feature-visual:before,.feature-visual:after{content:"";position:absolute;border-radius:50%;background:#f9e6c6;filter:blur(1px)}.feature-visual:before{width:130px;height:130px;top:17%;left:20%;box-shadow:45px 70px 0 -20px #3c276e}.feature-visual:after{width:60px;height:60px;right:12%;bottom:18%;background:#62e4d1}
+.feature.small{background:radial-gradient(circle at 75% 15%,#2b6e7950,transparent 45%),#111116}.feature.small .feature-visual{background:linear-gradient(145deg,#d8ffb0,#55d7c7 50%,#5660e9);width:34%;right:5%;transform:rotate(-8deg)}.feature.small .feature-visual:before{background:#f7f2e9;box-shadow:55px 60px 0 -10px #8b5cf6}
+.creator-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.creator-card{display:flex;align-items:center;gap:12px;padding:14px;background:#111116;border:1px solid var(--line);border-radius:15px}.creator-card img{width:42px;height:42px;border-radius:12px;object-fit:cover}.creator-card strong{display:block;font-size:13px}.creator-card small{color:#9694a2;font-size:11px;display:block;margin-top:4px}
+.newsletter{border:1px solid var(--line);border-radius:24px;padding:42px;background:linear-gradient(110deg,#171326,#111116 65%);display:flex;align-items:center;justify-content:space-between;gap:25px}.newsletter h2{font:800 30px Manrope;letter-spacing:-.04em;margin:0 0 8px}.newsletter p{color:#a5a2b0;margin:0}.newsletter-form{display:flex;gap:8px;max-width:420px;width:100%}.newsletter-form input{min-width:0;flex:1;background:#0b0b10;border:1px solid var(--line);border-radius:11px;padding:13px;color:white;outline:none}
+footer{margin-top:80px;border-top:1px solid var(--line);padding:54px 0 24px;background:#0c0c10}.footer-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:45px}.footer-brand p{max-width:290px;color:#92909d;line-height:1.7;font-size:13px}.socials{display:flex;gap:8px;margin-top:18px}.socials a{width:34px;height:34px;border:1px solid var(--line);border-radius:10px;display:grid;place-items:center;color:#bbb}.footer-col strong{display:block;font-size:13px;margin-bottom:17px}.footer-col a{display:block;color:#9997a5;font-size:13px;margin:12px 0}.footer-col a:hover{color:#fff}.footer-bottom{border-top:1px solid var(--line);margin-top:42px;padding-top:20px;display:flex;justify-content:space-between;color:#777582;font-size:11px}
+.empty{grid-column:1/-1;text-align:center;color:#aaa;padding:55px;border:1px dashed var(--line);border-radius:18px}
+@media(max-width:1000px){.gallery{grid-template-columns:repeat(3,1fr)}.creator-grid{grid-template-columns:repeat(3,1fr)}.hero-art{grid-template-columns:repeat(4,1fr)}.art-tile:nth-child(n+5){display:none}}
+@media(max-width:700px){.container{width:min(100% - 34px,600px)}nav{height:70px}.navlinks,.navright .ghost{display:none}.menu{display:block}.navright .primary{padding:10px 13px}.hero{padding:70px 0 35px}h1{font-size:47px}.hero p{font-size:15px}.search-wrap{margin-top:27px}.search-wrap button{padding:13px 16px}.hero-art{margin:48px -40vw 0;grid-template-columns:repeat(4,1fr)}.art-tile{height:120px}.section{padding:55px 0}.section-head{align-items:start;flex-direction:column}.gallery{grid-template-columns:repeat(2,1fr);gap:11px}.thumb{height:175px}.card-info{padding:12px}.card-title{font-size:13px}.card-meta{font-size:10px}.stats{gap:6px}.feature-band{grid-template-columns:1fr}.feature{min-height:260px;padding:27px}.feature h3{font-size:26px;max-width:260px}.feature p{max-width:250px}.feature-visual{width:34%;right:-3%;height:65%}.creator-grid{grid-template-columns:repeat(2,1fr)}.newsletter{padding:28px;align-items:start;flex-direction:column}.newsletter h2{font-size:25px}.footer-grid{grid-template-columns:repeat(2,1fr);gap:30px}.footer-brand{grid-column:1/-1}.footer-bottom{gap:12px;flex-direction:column}}
+@media(max-width:390px){.gallery{grid-template-columns:1fr}.thumb{height:220px}.creator-grid{grid-template-columns:1fr}.quick-tags{display:none}}
+</style>
+</head>
+<body>
+<div class="container">
+<nav>
+  <a class="logo" href="#"><span class="logo-mark">F</span>forma<span style="color:#a78bfa">.</span></a>
+  <div class="navlinks"><a href="#explore">Explore</a><a href="#collections">Collections</a><a href="#creators">Creators</a><a href="#journal">Journal</a></div>
+  <div class="navright"><a class="btn ghost" href="#creators">Become a creator ↗</a><a class="btn primary" href="#explore">Explore library</a><button class="menu" aria-label="Open menu" onclick="document.querySelector('.navlinks').style.display='flex'">☰</button></div>
+</nav>
+
+<header class="hero">
+  <div class="eyebrow"><span class="pulse"></span> 2,400+ visuals added this week</div>
+  <h1>A little more <span class="gradient">visual magic.</span><br>For every big idea.</h1>
+  <p>A growing library of beautiful images, textures and creative assets — made to spark ideas and make your next project feel unmistakably yours.</p>
+  <form class="search-wrap" id="searchForm"><input id="searchInput" type="search" placeholder="Search images, moods, styles or creators..." aria-label="Search library"><button type="submit">Search&nbsp; ↗</button></form>
+  <div class="quick-tags"><span>✦ Editorial</span><span>3D & Render</span><span>Textures</span><span>Abstract</span><span>Photography</span></div>
+  <div class="hero-art" aria-hidden="true">
+    <div class="art-tile"><img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?w=500&q=80" alt=""></div>
+    <div class="art-tile"><img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=500&q=80" alt=""></div>
+    <div class="art-tile"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=500&q=80" alt=""></div>
+    <div class="art-tile"><img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=500&q=80" alt=""></div>
+    <div class="art-tile"><img src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?w=500&q=80" alt=""></div>
+    <div class="art-tile"><img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=500&q=80" alt=""></div>
+  </div>
+</header>
+
+<main>
+<section class="section" id="explore">
+  <div class="section-head"><div><div class="kicker">The good stuff</div><h2>Fresh from the library</h2><p class="section-sub">Hand-picked visuals to get your next idea moving.</p></div><a class="text-link" href="#explore">View all assets ↗</a></div>
+  <div class="filterbar" id="filters">
+    <button class="filter active" data-filter="all">All visuals</button><button class="filter" data-filter="photo">Photography</button><button class="filter" data-filter="abstract">Abstract</button><button class="filter" data-filter="3d">3D & Render</button><button class="filter" data-filter="texture">Textures</button><button class="filter" data-filter="nature">Nature</button>
+  </div>
+  <div class="gallery" id="gallery">
+    <article class="card" data-category="photo" data-name="quiet geometry architecture minimal"><div class="thumb"><img src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?w=800&q=85" alt="Sculptural modern architecture"><span class="type">Photography</span><button class="save" aria-label="Save image">♡</button></div><div class="card-info"><div class="card-title">Quiet Geometry</div><div class="card-meta"><span class="creator"><img class="avatar" src="https://i.pravatar.cc/80?img=12" alt=""> by noa.studio</span><span class="stats">♡ 248　↓ 1.2k</span></div></div></article>
+    <article class="card" data-category="abstract" data-name="liquid daydream gradient abstract"><div class="thumb"><img src="https://images.unsplash.com/photo-1550859492-d5da9d8e45f3?w=800&q=85" alt="Colorful abstract gradient"><span class="type">Abstract</span><button class="save" aria-label="Save image">♡</button></div><div class="card-info"><div class="card-title">Liquid Daydream</div><div class="card-meta"><span class="creator"><img class="avatar" src="https://i.pravatar.cc/80?img=32" alt=""> by studio.melt</span><span class="stats">♡ 391　↓ 2.4k</span></div></div></article>
+    <article class="card" data-category="nature" data-name="soft horizons landscape nature"><div class="thumb"><img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=800&q=85" alt="Mountain lake landscape"><span class="type">Nature</span><button class="save" aria-label="Save image">♡</button></div><div class="card-info"><div class="card-title">Soft Horizons</div><div class="card-meta"><span class="creator"><img class="avatar" src="https://i.pravatar.cc/80?img=47" alt=""> by ellie.frames</span><span class="stats">♡ 186　↓ 980</span></div></div></article>
+    <article class="card" data-category="texture" data-name="paper studies grain texture"><div class="thumb"><img src="https://images.unsplash.com/photo-1557683316-973673baf926?w=800&q=85" alt="Soft color and grain texture"><span class="type">Texture</span><button class="save" aria-label="Save image">♡</button></div><div class="card-info"><div class="card-title">Paper Studies 04</div><div class="card-meta"><span class="creator"><img class="avatar" src="https://i.pravatar.cc/80?img=5" alt=""> by typefoundry</span><span class="stats">♡ 302　↓ 1.8k</span></div></div></article>
+    <article class="card" data-category="3d" data-name="future relic 3d render object"><div class="thumb"><img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?w=800&q=85" alt="Surreal 3D sculptural object"><span class="type">3D & Render</span><button class="save" aria-label="Save image">♡</button></div><div class="card-info"><div class="card-title">Future Relic</div><div class="card-meta"><span class="creator"><img class="avatar" src="https://i.pravatar.cc/80?img=15" alt=""> by render.room</span><span class="stats">♡ 529　↓ 3.1k</span></div></div></article>
+    <article class="card" data-category="photo" data-name="the sunday edit editorial photography"><div class="thumb"><img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&q=85" alt="Editorial fashion still life"><span class="type">Photography</span><button class="save" aria-label="Save image">♡</button></div><div class="card-info"><div class="card-title">The Sunday Edit</div><div class="card-meta"><span class="creator"><img class="avatar" src="https://i.pravatar.cc/80?img=23" alt=""> by camille.jpg</span><span class="stats">♡ 174　↓ 760</span></div></div></article>
+    <article class="card" data-category="abstract" data-name="electric bloom colorful abstract"><div class="thumb"><img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=800&q=85" alt="Vibrant abstract color forms"><span class="type">Abstract</span><button class="save" aria-label="Save image">♡</button></div><div class="card-info"><div class="card-title">Electric Bloom</div><div class="card-meta"><span class="creator"><img class="avatar" src="https://i.pravatar.cc/80?img=41" alt=""> by pixel.poet</span><span class="stats">♡ 412　↓ 2.0k</span></div></div></article>
+    <article class="card" data-category="nature" data-name="blue hour sea ocean water"><div class="thumb"><img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=800&q=85" alt="Ocean waves in blue light"><span class="type">Nature</span><button class="save" aria-label="Save image">♡</button></div><div class="card-info"><div class="card-title">Blue Hour, No. 02</div><div class="card-meta"><span class="creator"><img class="avatar" src="https://i.pravatar.cc/80?img=52" alt=""> by north.collective</span><span class="stats">♡ 267　↓ 1.5k</span></div></div></article>
+  </div>
+</section>
+
+<section class="section" id="collections">
+  <div class="section-head"><div><div class="kicker">A shortcut to inspiration</div><h2>Collections with a point of view</h2><p class="section-sub">Thoughtfully gathered visual worlds for wherever your mind wanders.</p></div><a class="text-link" href="#collections">Explore collections ↗</a></div>
+  <div class="feature-band">
+    <div class="feature"><div class="kicker">Collection 01 · 48 assets</div><h3>Objects from another orbit.</h3><p>Unexpected shapes, playful dimensions and surreal 3D forms for ideas that refuse to stay ordinary.</p><a class="btn" href="#explore">Explore the collection ↗</a><div class="feature-visual"></div></div>
+    <div class="feature small"><div class="kicker">Collection 02 · 32 assets</div><h3>Slow days, soft light.</h3><p>Quiet tones and considered compositions. A little breathing room for your canvas.</p><a class="btn" href="#explore">Explore the collection ↗</a><div class="feature-visual"></div></div>
+  </div>
+</section>
+
+<section class="section" id="creators">
+  <div class="section-head"><div><div class="kicker">Good people, great pixels</div><h2>Meet the makers</h2><p class="section-sub">Independent creatives adding their perspective to the library.</p></div><a class="text-link" href="#creators">All creators ↗</a></div>
+  <div class="creator-grid">
+    <div class="creator-card"><img src="https://i.pravatar.cc/100?img=12" alt=""><div><strong>Noa Studio</strong><small>126 assets · Berlin</small></div></div>
+    <div class="creator-card"><img src="https://i.pravatar.cc/100?img=32" alt=""><div><strong>Studio Melt</strong><small>84 assets · London</small></div></div>
+    <div class="creator-card"><img src="https://i.pravatar.cc/100?img=47" alt=""><div><strong>Ellie Frames</strong><small>61 assets · Oslo</small></div></div>
+    <div class="creator-card"><img src="https://i.pravatar.cc/100?img=15" alt=""><div><strong>Render Room</strong><small>93 assets · Seoul</small></div></div>
+    <div class="creator-card"><img src="https://i.pravatar.cc/100?img=5" alt=""><div><strong>Type Foundry</strong><small>52 assets · Amsterdam</small></div></div>
+  </div>
+</section>
+
+<section class="section" id="journal">
+  <div class="newsletter"><div><div class="kicker">A good thing in your inbox</div><h2>Make room for inspiration.</h2><p>New drops, creator stories and visual rabbit holes. No noise, just the good stuff.</p></div><form class="newsletter-form" onsubmit="event.preventDefault();this.querySelector('button').textContent='You’re on the list ✓';"><input type="email" required placeholder="Your email address" aria-label="Email address"><button class="btn primary" type="submit">Get the good stuff ↗</button></form></div>
+</section>
+</main>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand"><a class="logo" href="#"><span class="logo-mark">F</span>forma<span style="color:#a78bfa">.</span></a><p>A visual library for curious minds. Discover, collect and share the images that make your ideas feel alive.</p><div class="socials"><a href="#" aria-label="Instagram">ig</a><a href="#" aria-label="Pinterest">p</a><a href="#" aria-label="Dribbble">◎</a><a href="#" aria-label="Discord">◈</a></div></div>
+    <div class="footer-col"><strong>Explore</strong><a href="#explore">All visuals</a><a href="#collections">Collections</a><a href="#creators">Creators</a><a href="#journal">Latest drops</a></div>
+    <div class="footer-col"><strong>For creators</strong><a href="#creators">Join the library</a><a href="#creators">Creator guidelines</a><a href="#creators">Submit your work</a><a href="#creators">Community</a></div>
+    <div class="footer-col"><strong>Good to know</strong><a href="#">About Forma</a><a href="#">Licensing & usage</a><a href="#">FAQs</a><a href="#">Get in touch</a></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Forma Library. Made for the visually curious.</span><span>Terms　·　Privacy　·　Back to top ↑</span></div>
+</footer>
+</div>
+<script>
+const filters=[...document.querySelectorAll('.filter')], cards=[...document.querySelectorAll('.card')], input=document.getElementById('searchInput');
+let active='all';
+function update(){const q=input.value.trim().toLowerCase();let count=0;cards.forEach(card=>{const ok=(active==='all'||card.dataset.category===active)&&(!q||(card.dataset.name+' '+card.innerText).toLowerCase().includes(q));card.style.display=ok?'':'none';if(ok)count++});let empty=document.querySelector('.empty');if(!count&&!empty){empty=document.createElement('div');empty.className='empty';empty.textContent='No visuals found. Try another search or category.';document.getElementById('gallery').append(empty)}else if(count&&empty)empty.remove()}
+filters.forEach(btn=>btn.addEventListener('click',()=>{filters.forEach(x=>x.classList.remove('active'));btn.classList.add('active');active=btn.dataset.filter;update()}));
+document.getElementById('searchForm').addEventListener('submit',e=>{e.preventDefault();update();document.getElementById('explore').scrollIntoView({behavior:'smooth'})});
+input.addEventListener('input',update);
+document.querySelectorAll('.save').forEach(btn=>btn.addEventListener('click',()=>{btn.classList.toggle('saved');btn.textContent=btn.classList.contains('saved')?'♥':'♡'}));
+</script>
+</body>
+</html>
